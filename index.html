@@ -7,321 +7,56 @@
 
 	<title>reveal.js</title>
 
-	<link rel="stylesheet" href="dist/reset.css">
-	<link rel="stylesheet" href="dist/reveal.css">
-	<link rel="stylesheet" href="dist/theme/white.css">
 
-	<!-- Theme used for syntax highlighted code -->
-	<!-- <link rel="stylesheet" href="//unpkg.com/@catppuccin/highlightjs@1.0.1/css/catppuccin-latte.css"> -->
-	<link rel="stylesheet" href="//unpkg.com/@catppuccin/highlightjs@1.0.1/css/catppuccin-macchiato.css">
-	<!-- <link rel="stylesheet" href="plugin/highlight/monokai.css"> -->
-	<!-- <link rel="stylesheet" href="plugin/highlight/code_highlight.css"> -->
+	         <style>
+            table {
+                border-collapse: collapse;
+            }
+
+            th, td {
+                border: 1px solid lightgrey;
+                padding: 0.5em 1em 0.5em 1em;
+            }
+        </style>
 </head>
 
 <body>
-	<div class="reveal">
-		<div class="slides">
-			<!-- <section>Slide 1</section> -->
-			<section>
-				<pre><code data-trim class="language-gdscript">
-# Everything after "#" is a comment.
-# A file is a class!
+	<h3>GAKI (Game Programming und KI) Folien</h1>
+	<table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th colspan="4">Links</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                <tr>
+                    <td>01-Intro</td>
+                    <td>
+                        <a href="slides/01-intro.html" target="_blank" title="View slides">slides</a>
+                    </td>
 
-# (optional) icon to show in the editor dialogs:
-@icon("res://path/to/optional/icon.svg")
+                    <td>
+                        <a href="slides/01-intro.html?print-pdf" target="_blank" title="Download as PDF">PDF</a>
+                    </td>
 
-# (optional) class definition:
-class_name MyClass
+                </tr>
+            
+                <tr>
+                    <td>02-further</td>
+                    <td>
+                        <a href="demo.html" target="_blank" title="View slides">slides</a>
+                    </td>
 
-# Inheritance:
-extends BaseClass
+                    <td>
+                        <a href="demo.html?print-pdf" target="_blank" title="Download as PDF">PDF</a>
+                    </td>
 
-
-# Member variables.
-var a = 5
-var s = "Hello"
-var arr = [1, 2, 3]
-var dict = {"key": "value", 2: 3}
-var other_dict = {key = "value", other_key = 2}
-var typed_var: int
-var inferred_type := "String"
-
-# Constants.
-const ANSWER = 42
-const THE_NAME = "Charly"
-
-# Enums.
-enum {UNIT_NEUTRAL, UNIT_ENEMY, UNIT_ALLY}
-enum Named {THING_1, THING_2, ANOTHER_THING = -1}
-
-# Built-in vector types.
-var v2 = Vector2(1, 2)
-var v3 = Vector3(1, 2, 3)
-
-
-# Functions.
-func some_function(param1, param2, param3):
-	const local_const = 5
-
-	if param1 < local_const:
-		print(param1)
-	elif param2 > 5:
-		print(param2)
-	else:
-		print("Fail!")
-
-	for i in range(20):
-		print(i)
-
-	while param2 != 0:
-		param2 -= 1
-
-	match param3:
-		3:
-			print("param3 is 3!")
-		_:
-			print("param3 is not 3!")
-
-	var local_var = param1 + 3
-	return local_var
-
-
-# Functions override functions with the same name on the base/super class.
-# If you still want to call them, use "super":
-func something(p1, p2):
-	super(p1, p2)
-
-
-# It's also possible to call another function in the super class:
-func other_something(p1, p2):
-	super.something(p1, p2)
-
-
-# Inner class
-class Something:
-	var a = 10
-
-
-# Constructor
-func _init():
-	print("Constructed!")
-	var lv = Something.new()
-	print(lv.a)
-				</code>
-
-				</pre>
-			</section>
-			<section data-markdown>
-				<textarea data-template>
-						```gdscript
-						# Everything after "#" is a comment.
-# A file is a class!
-
-# (optional) icon to show in the editor dialogs:
-@icon("res://path/to/optional/icon.svg")
-
-# (optional) class definition:
-class_name MyClass
-
-# Inheritance:
-extends BaseClass
-
-
-# Member variables.
-var a = 5
-var s = "Hello"
-var arr = [1, 2, 3]
-var dict = {"key": "value", 2: 3}
-var other_dict = {key = "value", other_key = 2}
-var typed_var: int
-var inferred_type := "String"
-
-# Constants.
-const ANSWER = 42
-const THE_NAME = "Charly"
-
-# Enums.
-enum {UNIT_NEUTRAL, UNIT_ENEMY, UNIT_ALLY}
-enum Named {THING_1, THING_2, ANOTHER_THING = -1}
-
-# Built-in vector types.
-var v2 = Vector2(1, 2)
-var v3 = Vector3(1, 2, 3)
-
-
-# Functions.
-func some_function(param1, param2, param3):
-	const local_const = 5
-
-	if param1 < local_const:
-		print(param1)
-	elif param2 > 5:
-		print(param2)
-	else:
-		print("Fail!")
-
-	for i in range(20):
-		print(i)
-
-	while param2 != 0:
-		param2 -= 1
-
-	match param3:
-		3:
-			print("param3 is 3!")
-		_:
-			print("param3 is not 3!")
-
-	var local_var = param1 + 3
-	return local_var
-
-
-# Functions override functions with the same name on the base/super class.
-# If you still want to call them, use "super":
-func something(p1, p2):
-	super(p1, p2)
-
-
-# It's also possible to call another function in the super class:
-func other_something(p1, p2):
-	super.something(p1, p2)
-
-
-# Inner class
-class Something:
-	var a = 10
-
-
-# Constructor
-func _init():
-	print("Constructed!")
-	var lv = Something.new()
-	print(lv.a)
-						```
-					</textarea>
-			</section>
-
-			<section>Slide 2</section>
-		</div>
-	</div>
-
-	<script src="dist/reveal.js"></script>
-	<script src="plugin/notes/notes.js"></script>
-	<script src="plugin/markdown/markdown.js"></script>
-	<script src="plugin/highlight/highlight.js"></script>
-
-	<script>
-		// More info about initialization & config:
-		// - https://revealjs.com/initialization/
-		// - https://revealjs.com/config/
-
-		Reveal.initialize({
-			hash: true,
-			highlight: {
-				highlightLanguages: true,
-				beforeHighlight: (hljs) => {
-					hljs.registerLanguage("gdscript", function () {
-						"use strict";
-						return {
-							keywords: {
-								// Core language keywords (Godot 4)
-								keyword:
-									"class class_name extends is func signal static const enum var " +
-									"breakpoint if elif else for while match continue pass return break " +
-									"in as await and or not self super void ",
-
-								// Annotations
-								meta:
-									"@export @onready @rpc @icon @tool @warning_ignore " +
-									"@deprecated @must_use @static_unload",
-
-								// Literals & constants
-								literal: "true false null",
-
-								// Built-in constants
-								variable:
-									"PI TAU INF NAN ",
-
-								// Built-in functions (Godot 4, GDScript 2.0)
-								built_in:
-									"abs acos acosh asin asinh atan atanh atan2 bytes_to_var ceil char clamp " +
-									"conj cos cosh cbrt db_to_linear deg_to_rad dict_to_inst ease exp expm1 " +
-									"floor fmod fposmod hash inst_to_dict instance_from_id inverse_lerp " +
-									"is_equal_approx is_finite is_inf is_instance_valid is_nan is_zero_approx " +
-									"len lerp lerpf lerp_angle linear_to_db load log log2 max min move_toward " +
-									"nearest_po2 ord parse_json polar_to_cartesian posmod pow preload print " +
-									"print_debug print_stack printerr printraw prints printt push_error push_warning " +
-									"rad_to_deg rand_from_seed rand_seed randf randi randomize range round seed " +
-									"sign sin sinh smoothstep sqrt step_decimals stepify str str_to_var tan tanh " +
-									"to_json type_exists typeof validate_json var_to_bytes var_to_str weakref " +
-									"wrapf wrapi ",
-
-								// Engine types
-								type:
-									"String Array Dictionary Vector2 Vector2i Vector3 Vector3i Vector4 Rect2 Rect2i " +
-									"Color Node Node2D CharacterBody2D RigidBody2D StaticBody2D Area2D " +
-									"CollisionShape2D CollisionPolygon2D Sprite2D AnimatedSprite2D TileMap " +
-									"Camera2D NavigationRegion2D CanvasItem Control Button Label LineEdit TextEdit " +
-									"Container Panel TextureRect GridContainer VBoxContainer HBoxContainer " +
-									"SceneTree Resource PackedScene AnimationPlayer AnimationTree Timer Tween " +
-									"Shader ShaderMaterial Mesh MeshInstance3D Camera3D Light3D WorldEnvironment " +
-									"AudioStreamPlayer2D AudioStreamPlayer3D Input Event File PackedByteArray " +
-									"RID Callable Signal Variant",
-							},
-
-							contains: [
-								hljs.HASH_COMMENT_MODE,
-								hljs.NUMBER_MODE,
-
-								// Strings (multi-line and single)
-								{
-									className: "string",
-									begin: '"""',
-									end: '"""',
-									relevance: 10,
-								},
-								hljs.QUOTE_STRING_MODE,
-
-								// Functions
-								{
-									className: "title function_",
-									beginKeywords: "func",
-									end: /:/,
-									excludeEnd: true,
-									contains: [hljs.UNDERSCORE_TITLE_MODE],
-								},
-
-								// Classes
-								{
-									className: "title class_",
-									beginKeywords: "class",
-									end: /:/,
-									excludeEnd: true,
-									contains: [hljs.UNDERSCORE_TITLE_MODE],
-								},
-
-								// Annotations (@something)
-								{
-									className: "meta",
-									begin: /@[A-Za-z_]\w*/,
-								},
-
-								// .new() and method calls
-								{
-									className: "built_in",
-									begin: /\.\s*[A-Za-z_]\w*\s*(?=\()/,
-									relevance: 0,
-								},
-							],
-						};
-
-					})
-				}
-			},
-			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
-		});
-	</script>
+                </tr>
+            
+            </tbody>
+        </table>
 </body>
 
 </html>
