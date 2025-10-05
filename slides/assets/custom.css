@@ -1,0 +1,28 @@
+.reveal ul.naked {
+  list-style-type: none;
+}
+
+.grid4 {
+  display: grid;
+  grid-template-columns: repeat(2, 45%);
+  grid-template-rows: repeat(2, auto);
+  justify-content: center; /* centers the two 40% columns */
+  gap: 0px; /* spacing between images */
+}
+
+.grid4 > img {
+  width: 100%;       /* fill the grid cell */
+  height: auto;      /* keep aspect ratio */
+  object-fit: cover; /* or "contain" if you want full image visible */
+  border-radius: 8px;
+  display: block;
+  margin: 0px;
+}
+
+.reveal img.fit-height{
+    max-height: 60vh;
+}
+
+.reveal .no-gap{
+    margin: 0;
+}
