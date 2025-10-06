@@ -26,3 +26,12 @@
 .reveal .no-gap{
     margin: 0;
 }
+
+
+.reveal p.smol{
+  font-size: large;
+}
+
+.pixelated{
+  image-rendering: pixelated;
+}
