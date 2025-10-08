@@ -7,6 +7,7 @@
   grid-template-columns: repeat(2, 45%);
   grid-template-rows: repeat(2, auto);
   justify-content: center; /* centers the two 40% columns */
+  align-items: center;
   gap: 0px; /* spacing between images */
 }
 
