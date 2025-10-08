@@ -1,259 +1,344 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
     <title>reveal.js</title>
 
-    <link rel="stylesheet" href="../dist/reset.css">
-    <link rel="stylesheet" href="../dist/reveal.css">
+    <link rel="stylesheet" href="../dist/reset.css" />
+    <link rel="stylesheet" href="../dist/reveal.css" />
     <!-- <link rel="stylesheet" href="dist/theme/white.css"> -->
-    <link rel="stylesheet" href="../dist/theme/beige.css">
-    <link rel="stylesheet" href="assets/custom.css">
+    <link rel="stylesheet" href="../dist/theme/beige.css" />
+    <link rel="stylesheet" href="assets/custom.css" />
 
     <!-- Theme used for syntax highlighted code -->
     <!-- <link rel="stylesheet" href="//unpkg.com/@catppuccin/highlightjs@1.0.1/css/catppuccin-latte.css"> -->
     <!-- <link rel="stylesheet" href="//unpkg.com/@catppuccin/highlightjs@1.0.1/css/catppuccin-macchiato.css"> -->
-    <link rel="stylesheet" href="../plugin/highlight/catppuccin-macchiato.css">
+    <link
+      rel="stylesheet"
+      href="../plugin/highlight/catppuccin-macchiato.css"
+    />
     <!-- <link rel="stylesheet" href="plugin/highlight/monokai.css"> -->
     <!-- <link rel="stylesheet" href="plugin/highlight/code_highlight.css"> -->
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="reveal">
-        <div class="slides">
-            <section>
-                <h1>GAKI</h1>
-                <h3>Game Programming und KI</h3>
-                <p>Yannik Brändle - WS25/26</p>
-                <p>TH Bingen</p>
-            </section>
-            <section>
-                <h3>Kontaktdaten</h3>
-                <ul class="naked">
-                    <li>Yannik Brändle</li>
-                    <li>Mail & MS Teams: <b>y.braendle@th-bingen.de</b></li>
-                    <li>Büro: 1-301 (öfters im KI/Robotik Labor 3-115)</li>
-                    <li>Sprechstunden: Termin via mail</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Vorab</h3>
-                <ul>
-                    <li>"Denglisch"</li>
-                    <li>RevealJS</li>
-                    <li>Feedback zum Kurs</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Kursinfos</h3>
-                <ul class="naked">
-                    <li>OLAT Kurs: </li>
-                    <li><a
-                        href="https://olat.vcrp.de/url/RepositoryEntry/5015372142">https://olat.vcrp.de/url/RepositoryEntry/5015372142</a>
-                    </li>
-                    <li>Wichtige Infos via OLAT Mitteilung und E-Mail</li>
-                    <li>Gruppeneinteilung in OLAT bis spätestens <b>(zwei Wochen)</b></li>
-                </ul>
-                <img src="assets/olat_qr_code.png" alt="OLAT QR Code" width="30%" class="pixelated">
-            </section>
-            <section>
-                <h3>Kursziel</h3>
-                <ul>
-                    <li class="fragment">Grundlegende Fähigkeiten ein Spiel zu entwickeln</li>
-                    <li class="fragment">Verständnis über den Begriff "KI" im Bezug auf Spiele</li>
-                    <li class="fragment">Wissen über gängige KI Systeme</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Prüfungsleistung: Projektarbeit</h3>
-                <ul>
-                    <li class="fragment">1-3 Personengruppen (je nach Kursgröße)</li>
-                    <li class="fragment">Projekt ist ein "beliebiges" Videospiel</li>
-                    <ul>
-                        <li class="fragment">muss mindestens eines der vorgestellten KI-Systeme umsetzen</li>
-                        <li class="fragment">rudimentäres GDD (Game Design Document) für Spielkonzept </li>
-                        <li class="fragment">Dozent muss dem Spielkonzept zustimmen</li>
-                        <li class="fragment">2D oder 3D egal</li>
-                    </ul>
-                </ul>
-            </section>
-            <section>
-                <h3>Übungen</h3>
-                <ul>
-                    <li class="fragment">Freiwillige Übungen</li>
-                    <li class="fragment">3 Spieleprojekte zum lernen der Basics</li>
-                    <li class="fragment">Bei Spiel 2: Turnier von KIs zwischen Studenten</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Modultermine</h3>
-                <ul>
-                    <li class="fragment">Gruppenfindung bis 23.10.25</li>
-                    <li class="fragment">Vorlesungstermine Donnerstags</li>
-                    <ul>
-                        <li class="fragment">2. Block: 10:00-11:30</li>
-                        <li class="fragment">in: 2-137a</li>
-                    </ul>
-                    <li class="fragment">Übungstermine Dienstags</li>
-                    <ul>
-                        <li class="fragment">2. Block 10:00-11:30</li>
-                        <li class="fragment">in: 11-201 (Rechenzentrum!)</li>
-                    </ul>
-                    <li class="fragment">Ca. Hälfte Semester Projektstart</li>
-                </ul>
-            </section>
-            <section>
-                <img class="r-stretch no-gap" src="assets/Hochschulkalender_ws25_26.png" alt="Hochschulkalenderplan">
-                <div> <span style="color: #00ff75;">■</span>Grün == Normalbetrieb | <span
-                        style="color: #ffd800;">■</span>Gelb == Projekttermine </div>
-            </section>
+      <div class="slides">
+        <section>
+          <h1>GAKI</h1>
+          <h3>Game Programming und KI</h3>
+          <p>Yannik Brändle - WS25/26</p>
+          <p>TH Bingen</p>
+        </section>
+        <section>
+          <h3>Kontaktdaten</h3>
+          <ul class="naked">
+            <li>Yannik Brändle</li>
+            <li>Mail & MS Teams: <b>y.braendle@th-bingen.de</b></li>
+            <li>Büro: 1-301 (öfters im KI/Robotik Labor 3-115)</li>
+            <li>Sprechstunden: Termin via mail</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Vorab</h3>
+          <ul>
+            <li class="fragment">"Denglisch"</li>
+            <li class="fragment">RevealJS</li>
+            <li class="fragment">Feedback zum Kurs</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Kursinfos</h3>
+          <ul class="naked">
+            <li>OLAT Kurs:</li>
+            <li>
+              <a href="https://olat.vcrp.de/url/RepositoryEntry/5015372142"
+                >https://olat.vcrp.de/url/RepositoryEntry/5015372142</a
+              >
+            </li>
+            <li>Wichtige Infos via OLAT Mitteilung und E-Mail</li>
+            <li>
+              Gruppeneinteilung in OLAT bis spätestens <b>(zwei Wochen)</b>
+            </li>
+          </ul>
+          <img
+            src="assets/olat_qr_code.png"
+            alt="OLAT QR Code"
+            width="30%"
+            class="pixelated"
+          />
+        </section>
+        <section>
+          <h3>Kursziel</h3>
+          <ul>
+            <li class="fragment">
+              Grundlegende Fähigkeiten ein Spiel zu entwickeln
+            </li>
+            <li class="fragment">
+              Verständnis über den Begriff "KI" im Bezug auf Spiele
+            </li>
+            <li class="fragment">Wissen über gängige KI Systeme</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Prüfungsleistung: Projektarbeit</h3>
+          <ul>
+            <li class="fragment">1-3 Personengruppen (je nach Kursgröße)</li>
+            <li class="fragment">Projekt ist ein "beliebiges" Videospiel</li>
+            <ul>
+              <li class="fragment">
+                muss mindestens eines der vorgestellten KI-Systeme umsetzen
+              </li>
+              <li class="fragment">
+                rudimentäres GDD (Game Design Document) für Spielkonzept
+              </li>
+              <li class="fragment">Dozent muss dem Spielkonzept zustimmen</li>
+              <li class="fragment">2D oder 3D egal</li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h3>Übungen</h3>
+          <ul>
+            <li class="fragment">Freiwillige Übungen</li>
+            <li class="fragment">3 Spieleprojekte zum lernen der Basics</li>
+            <li class="fragment">
+              Bei Spiel 2: Turnier von KIs zwischen Studenten
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Modultermine</h3>
+          <ul>
+            <li class="fragment">Gruppenfindung bis 23.10.25</li>
+            <li class="fragment">Vorlesungstermine Donnerstags</li>
+            <ul>
+              <li class="fragment">2. Block: 10:00-11:30</li>
+              <li class="fragment">in: 2-137a</li>
+            </ul>
+            <li class="fragment">Übungstermine Dienstags</li>
+            <ul>
+              <li class="fragment">2. Block 10:00-11:30</li>
+              <li class="fragment">in: 11-201 (Rechenzentrum!)</li>
+            </ul>
+            <li class="fragment">Ca. Hälfte Semester Projektstart</li>
+          </ul>
+        </section>
+        <section>
+          <img
+            class="r-stretch no-gap"
+            src="assets/Hochschulkalender_ws25_26.png"
+            alt="Hochschulkalenderplan"
+          />
+          <div>
+            <span style="color: #00ff75">■</span>Grün == Normalbetrieb |
+            <span style="color: #ffd800">■</span>Gelb == Projekttermine
+          </div>
+        </section>
 
-            <section>
-                <h3>Wer bin ich?</h3>
-                <ul>
-                    <li class="fragment">Yannik Brändle</li>
-                    <li class="fragment">Ausbildung als FISI</li>
-                    <li class="fragment">B-IN + M-IN an der TH Bingen</li>
-                    <li class="fragment">Seit 01.10.2024 Wissenschaftlicher Mitarbeiter "KI" an der TH</li>
-                    <li class="fragment">Aktiv in der Spieleentwicklung seit Juli 2022</li>
-                    <ul>
-                        <li class="fragment">Angefangen mit Unity3D</li>
-                        <li class="fragment">Seit ~Novemeber 2023 hauptsächlich Godot Entwickler </li>
-                        <li class="fragment">Teilgenommen an 17 Game Jams</li>
-                    </ul>
-                </ul>
-            </section>
-            <section>
-                <h4>Portfolio ➡️ <a href="http://misterixi.itch.io/">https://misterixi.itch.io/</a></h3>
-                    <div class="grid4">
-
-                        <img src="./assets/AlchemistAssembly.png" />
-                        <img src="./assets/life_support1.png" />
-                        <img src="./assets/BadApple1.jpg" />
-                        <img src="./assets/Leberkaes1.png" />
-                    </div>
-            </section>
-            <section>
-                <h2>Was ist "KI"?</h2>
-            </section>
-            <section>
-                <h3>Definition <span style="text-decoration: underline;">KI</span>:</h3>
-                <blockquote>
-                    Künstliche Intelligenz (KI) [...] bezeichnet im weitesten Sinne computerbasierte Systeme, die ihre
-                    (virtuelle oder reale) Umgebung analysieren können, um daraus relevante Informationen zu
-                    abstrahieren, welche sie nutzen, um Entscheidungen zu treffen, die ihre Chance erhöhen, definierte
-                    Ziele zu erreichen.
-                </blockquote>
-                <p>(Wikipedia)</p>
-            </section>
-            <section>
-                <h4>In Kurz:</h4>
-                <p>System, dass auf die Umgebung reagieren kann.</p>
-            </section>
-            <section>
-                <h4>KI als Spieler</h4>
-                <video data-autoplay loop src="assets/SC2_deepmind.mp4" width="90%"></video>
-                <p>Google Deepmind (SC2) - <a
-                        href="https://youtu.be/5iZlrBqDYPM">https://youtu.be/5iZlrBqDYPM</a>
-                </p>
-            </section>
-            <section>
-                <h4>KI als NPC ("Drivatar" in Forza Horizon)</h4>
-                <video data-autoplay loop src="assets/Forza4_Ai_And Games.mp4" width="80%"></video>
-                <p>AI and Games - <a
-                        href="https://youtu.be/JeYP9eyIl4E">https://youtu.be/JeYP9eyIl4E</a>
-                </p>
-            </section>
-            <section>
-                <h4>Finite State Machine - Simple KI</h4>
-                <video data-autoplay loop src="assets/fsm_ai_steffen_samuraigame.mp4" width="80%"></video>
-                <p>Unnamed Prototype - <a href="https://steffen-winternheimer.de/">https://steffen-winternheimer.de/</a></p>
-            </section>
-            <section>
-                <h4>Rule based AI - ist auch eine KI</h4>
-                <video data-autoplay loop src="assets/PongAI_gampelay.mkv" width="80%"></video>
-                <p>Pong - Yannik Brändle</p>
-            </section>
-            <section>
-                <h3>Game Engines</h3>
-            </section>
-            <section>
-                <h3>Große Engines im Indie Bereich</h3>
-                <div class="grid4">
-                    <img src="assets/godot_logo.svg" alt="Godot Logo">
-                    <img src="assets/unity_logo.png" alt="Unity Logo">
-                    <img src="assets/unreal_engine_logo.png" alt="Unreal Engine Logo">
-                    <img src="assets/game_maker_logo.webp" alt="Game Maker Logo">
-                </div>
-            </section>
-            <section>
-                <h3>Hauptaufgaben einer Game Engine</h3>
-                <ul>
-                    <li class="fragment"><b>Rendering</b> - 2D oder 3D Objekte verlässlich rendern</li>
-                    <li class="fragment"><b>Physics simulation</b> - Kollisionserkennung, Reibung, Abprallungen, Gravitation, ...</li>
-                    <li class="fragment"><b>Audio</b> - Musik und SFX abspielen, räumlicher Ton simulieren, ...</li>
-                    <li class="fragment">und diverse andere Komponenten und Hilfen</li>
-                </ul>
-            </section>
-            <section>
-                <h3>Gamedev Kategorien</h3>
-                <ul>
-                    <li class="fragment">Game Design</li>
-                    <li class="fragment">Game Programming (Fokus hier)</li>
-                    <li class="fragment">Game Art</li>
-                    <li class="fragment">Audio</li>
-                    <li class="fragment">Production and Management</li>
-                </ul>
-            </section>
-            <section>
-                <h4>Game Design</h4>
-                <ul>
-                    <li class="fragment">Kernmechaniken und "Spielregeln"</li>
-                    <li class="fragment">Level Design und World building</li>
-                    <li class="fragment">Narrative Design</li>
-                    <li class="fragment">Balancing und Progression</li>
-                </ul>
-            </section>
-            <section>
-                <h4>Game Programming</h4>
-                <ul>
-                    <li class="fragment">Gameplay Logik und Systeme</li>
-                    <li class="fragment">Engine und Tool entwicklung</li>
-                    <li class="fragment">KI Systeme</li>
-                    <li class="fragment">Optimierungen und Fehlerbehebung</li>
-                </ul>
-            </section>
-            <section>
-                <h4>Game Art</h4>
-                <ul>
-                    <li class="fragment">Concept Art</li>
-                    <li class="fragment">2D/3D asset Erstellung (Bilder, Modelle, Texturen, Animationen,...)</li>
-                    <li class="fragment">UI/UX design</li>
-                    <li class="fragment">Visual effects (Partikeleffekte, Shader, ...)</li>
-                </ul>
-            </section>
-            <section>
-                <h4>Audio</h4>
-                <ul>
-                    <li class="fragment">Music Komposition</li>
-                    <li class="fragment">Sound Design (was, wie, wo)</li>
-                    <li class="fragment">SFX Erstellung</li>
-                    <li class="fragment">Voice acting</li>
-                </ul>
-            </section>
-            <section>
-                <h4>Production & Management</h4>
-                <ul>
-                    <li class="fragment">Projektmanagement</li>
-                    <li class="fragment">QA und Testing</li>
-                    <li class="fragment">Marketing</li>
-                    <li class="fragment">Publishing</li>
-                </ul>
-            </section>
-        </div>
+        <section>
+          <h3>Wer bin ich?</h3>
+          <ul>
+            <li class="fragment">Yannik Brändle</li>
+            <li class="fragment">Ausbildung als FISI</li>
+            <li class="fragment">B-IN + M-IN an der TH Bingen</li>
+            <li class="fragment">
+              Seit 01.10.2024 Wissenschaftlicher Mitarbeiter "KI" an der TH
+            </li>
+            <li class="fragment">
+              Aktiv in der Spieleentwicklung seit Juli 2022
+            </li>
+            <ul>
+              <li class="fragment">Angefangen mit Unity3D</li>
+              <li class="fragment">
+                Seit ~Novemeber 2023 hauptsächlich Godot Entwickler
+              </li>
+              <li class="fragment">Teilgenommen an 17 Game Jams</li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h4>
+            Portfolio ➡️
+            <a href="http://misterixi.itch.io/">https://misterixi.itch.io/</a>
+          </h4>
+          <div class="grid4">
+            <img src="./assets/AlchemistAssembly.png" />
+            <img src="./assets/life_support1.png" />
+            <img src="./assets/BadApple1.jpg" />
+            <img src="./assets/Leberkaes1.png" />
+          </div>
+        </section>
+        <section>
+          <h2>Was ist "KI"?</h2>
+        </section>
+        <section>
+          <h3>
+            Definition <span style="text-decoration: underline">KI</span>:
+          </h3>
+          <blockquote>
+            Künstliche Intelligenz (KI) [...] bezeichnet im weitesten Sinne
+            computerbasierte Systeme, die ihre (virtuelle oder reale) Umgebung
+            analysieren können, um daraus relevante Informationen zu
+            abstrahieren, welche sie nutzen, um Entscheidungen zu treffen, die
+            ihre Chance erhöhen, definierte Ziele zu erreichen.
+          </blockquote>
+          <p>(Wikipedia)</p>
+        </section>
+        <section>
+          <h4>In Kurz:</h4>
+          <p>System, dass auf die Umgebung reagieren kann.</p>
+        </section>
+        <section>
+          <h4>KI als Spieler</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/SC2_deepmind.mp4"
+            width="90%"
+          ></video>
+          <p>
+            Google Deepmind (SC2) -
+            <a href="https://youtu.be/5iZlrBqDYPM"
+              >https://youtu.be/5iZlrBqDYPM</a
+            >
+          </p>
+        </section>
+        <section>
+          <h4>KI als NPC ("Drivatar" in Forza Horizon)</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/Forza4_Ai_And Games.mp4"
+            width="80%"
+          ></video>
+          <p>
+            AI and Games -
+            <a href="https://youtu.be/JeYP9eyIl4E"
+              >https://youtu.be/JeYP9eyIl4E</a
+            >
+          </p>
+        </section>
+        <section>
+          <h4>Finite State Machine - Simple KI</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/fsm_ai_steffen_samuraigame.mp4"
+            width="80%"
+          ></video>
+          <p>
+            Unnamed Prototype -
+            <a href="https://steffen-winternheimer.de/"
+              >https://steffen-winternheimer.de/</a
+            >
+          </p>
+        </section>
+        <section>
+          <h4>Rule based AI - ist auch eine KI</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/PongAI_gampelay.mkv"
+            width="80%"
+          ></video>
+          <p>Pong - Yannik Brändle</p>
+        </section>
+        <section>
+          <h3>Game Engines</h3>
+        </section>
+        <section>
+          <h3>Große Engines im Indie Bereich</h3>
+          <div class="grid4">
+            <img src="assets/godot_logo.svg" alt="Godot Logo" />
+            <img src="assets/unity_logo.png" alt="Unity Logo" />
+            <img src="assets/unreal_engine_logo.png" alt="Unreal Engine Logo" />
+            <img src="assets/game_maker_logo.webp" alt="Game Maker Logo" />
+          </div>
+        </section>
+        <section>
+          <h3>Hauptaufgaben einer Game Engine</h3>
+          <ul>
+            <li class="fragment">
+              <b>Rendering</b> - 2D oder 3D Objekte verlässlich rendern
+            </li>
+            <li class="fragment">
+              <b>Physics simulation</b> - Kollisionserkennung, Reibung,
+              Abprallungen, Gravitation, ...
+            </li>
+            <li class="fragment">
+              <b>Audio</b> - Musik und SFX abspielen, räumlicher Ton simulieren,
+              ...
+            </li>
+            <li class="fragment">und diverse andere Komponenten und Hilfen</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Gamedev Kategorien</h3>
+          <ul>
+            <li class="fragment">Game Design</li>
+            <li class="fragment">Game Programming (Fokus hier)</li>
+            <li class="fragment">Game Art</li>
+            <li class="fragment">Audio</li>
+            <li class="fragment">Production and Management</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Game Design</h4>
+          <ul>
+            <li class="fragment">Kernmechaniken und "Spielregeln"</li>
+            <li class="fragment">Level Design und World building</li>
+            <li class="fragment">Narrative Design</li>
+            <li class="fragment">Balancing und Progression</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Game Programming</h4>
+          <ul>
+            <li class="fragment">Gameplay Logik und Systeme</li>
+            <li class="fragment">Engine und Tool entwicklung</li>
+            <li class="fragment">KI Systeme</li>
+            <li class="fragment">Optimierungen und Fehlerbehebung</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Game Art</h4>
+          <ul>
+            <li class="fragment">Concept Art</li>
+            <li class="fragment">
+              2D/3D asset Erstellung (Bilder, Modelle, Texturen,
+              Animationen,...)
+            </li>
+            <li class="fragment">UI/UX design</li>
+            <li class="fragment">
+              Visual effects (Partikeleffekte, Shader, ...)
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Audio</h4>
+          <ul>
+            <li class="fragment">Music Komposition</li>
+            <li class="fragment">Sound Design (was, wie, wo)</li>
+            <li class="fragment">SFX Erstellung</li>
+            <li class="fragment">Voice acting</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Production & Management</h4>
+          <ul>
+            <li class="fragment">Projektmanagement</li>
+            <li class="fragment">QA und Testing</li>
+            <li class="fragment">Marketing</li>
+            <li class="fragment">Publishing</li>
+          </ul>
+        </section>
+      </div>
     </div>
 
     <script src="../dist/reveal.js"></script>
@@ -262,122 +347,119 @@
     <script src="../plugin/highlight/highlight.js"></script>
 
     <script>
-        // More info about initialization & config:
-        // - https://revealjs.com/initialization/
-        // - https://revealjs.com/config/
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
 
-        Reveal.initialize({
-            width: 1280,
-            height: 720,
-            margin: 0.04,
-            hash: true,
-            pdfSeparateFragments: false,
-            slideNumber: "c",
-            highlight: {
-                highlightLanguages: true,
-                beforeHighlight: (hljs) => {
-                    hljs.registerLanguage("gdscript", function () {
-                        "use strict";
-                        return {
-                            keywords: {
-                                // Core language keywords (Godot 4)
-                                keyword:
-                                    "class class_name extends is func signal static const enum var " +
-                                    "breakpoint if elif else for while match continue pass return break " +
-                                    "in as await and or not self super void ",
+      Reveal.initialize({
+        width: 1280,
+        height: 720,
+        margin: 0.04,
+        hash: true,
+        pdfSeparateFragments: false,
+        slideNumber: "c",
+        highlight: {
+          highlightLanguages: true,
+          beforeHighlight: (hljs) => {
+            hljs.registerLanguage("gdscript", function () {
+              "use strict";
+              return {
+                keywords: {
+                  // Core language keywords (Godot 4)
+                  keyword:
+                    "class class_name extends is func signal static const enum var " +
+                    "breakpoint if elif else for while match continue pass return break " +
+                    "in as await and or not self super void ",
 
-                                // Annotations
-                                meta:
-                                    "@export @onready @rpc @icon @tool @warning_ignore " +
-                                    "@deprecated @must_use @static_unload",
+                  // Annotations
+                  meta:
+                    "@export @onready @rpc @icon @tool @warning_ignore " +
+                    "@deprecated @must_use @static_unload",
 
-                                // Literals & constants
-                                literal: "true false null",
+                  // Literals & constants
+                  literal: "true false null",
 
-                                // Built-in constants
-                                variable:
-                                    "PI TAU INF NAN ",
+                  // Built-in constants
+                  variable: "PI TAU INF NAN ",
 
-                                // Built-in functions (Godot 4, GDScript 2.0)
-                                built_in:
-                                    "abs acos acosh asin asinh atan atanh atan2 bytes_to_var ceil char clamp " +
-                                    "conj cos cosh cbrt db_to_linear deg_to_rad dict_to_inst ease exp expm1 " +
-                                    "floor fmod fposmod hash inst_to_dict instance_from_id inverse_lerp " +
-                                    "is_equal_approx is_finite is_inf is_instance_valid is_nan is_zero_approx " +
-                                    "len lerp lerpf lerp_angle linear_to_db load log log2 max min move_toward " +
-                                    "nearest_po2 ord parse_json polar_to_cartesian posmod pow preload print " +
-                                    "print_debug print_stack printerr printraw prints printt push_error push_warning " +
-                                    "rad_to_deg rand_from_seed rand_seed randf randi randomize range round seed " +
-                                    "sign sin sinh smoothstep sqrt step_decimals stepify str str_to_var tan tanh " +
-                                    "to_json type_exists typeof validate_json var_to_bytes var_to_str weakref " +
-                                    "wrapf wrapi ",
+                  // Built-in functions (Godot 4, GDScript 2.0)
+                  built_in:
+                    "abs acos acosh asin asinh atan atanh atan2 bytes_to_var ceil char clamp " +
+                    "conj cos cosh cbrt db_to_linear deg_to_rad dict_to_inst ease exp expm1 " +
+                    "floor fmod fposmod hash inst_to_dict instance_from_id inverse_lerp " +
+                    "is_equal_approx is_finite is_inf is_instance_valid is_nan is_zero_approx " +
+                    "len lerp lerpf lerp_angle linear_to_db load log log2 max min move_toward " +
+                    "nearest_po2 ord parse_json polar_to_cartesian posmod pow preload print " +
+                    "print_debug print_stack printerr printraw prints printt push_error push_warning " +
+                    "rad_to_deg rand_from_seed rand_seed randf randi randomize range round seed " +
+                    "sign sin sinh smoothstep sqrt step_decimals stepify str str_to_var tan tanh " +
+                    "to_json type_exists typeof validate_json var_to_bytes var_to_str weakref " +
+                    "wrapf wrapi ",
 
-                                // Engine types
-                                type:
-                                    "String Array Dictionary Vector2 Vector2i Vector3 Vector3i Vector4 Rect2 Rect2i " +
-                                    "Color Node Node2D CharacterBody2D RigidBody2D StaticBody2D Area2D " +
-                                    "CollisionShape2D CollisionPolygon2D Sprite2D AnimatedSprite2D TileMap " +
-                                    "Camera2D NavigationRegion2D CanvasItem Control Button Label LineEdit TextEdit " +
-                                    "Container Panel TextureRect GridContainer VBoxContainer HBoxContainer " +
-                                    "SceneTree Resource PackedScene AnimationPlayer AnimationTree Timer Tween " +
-                                    "Shader ShaderMaterial Mesh MeshInstance3D Camera3D Light3D WorldEnvironment " +
-                                    "AudioStreamPlayer2D AudioStreamPlayer3D Input Event File PackedByteArray " +
-                                    "RID Callable Signal Variant",
-                            },
+                  // Engine types
+                  type:
+                    "String Array Dictionary Vector2 Vector2i Vector3 Vector3i Vector4 Rect2 Rect2i " +
+                    "Color Node Node2D CharacterBody2D RigidBody2D StaticBody2D Area2D " +
+                    "CollisionShape2D CollisionPolygon2D Sprite2D AnimatedSprite2D TileMap " +
+                    "Camera2D NavigationRegion2D CanvasItem Control Button Label LineEdit TextEdit " +
+                    "Container Panel TextureRect GridContainer VBoxContainer HBoxContainer " +
+                    "SceneTree Resource PackedScene AnimationPlayer AnimationTree Timer Tween " +
+                    "Shader ShaderMaterial Mesh MeshInstance3D Camera3D Light3D WorldEnvironment " +
+                    "AudioStreamPlayer2D AudioStreamPlayer3D Input Event File PackedByteArray " +
+                    "RID Callable Signal Variant",
+                },
 
-                            contains: [
-                                hljs.HASH_COMMENT_MODE,
-                                hljs.NUMBER_MODE,
+                contains: [
+                  hljs.HASH_COMMENT_MODE,
+                  hljs.NUMBER_MODE,
 
-                                // Strings (multi-line and single)
-                                {
-                                    className: "string",
-                                    begin: '"""',
-                                    end: '"""',
-                                    relevance: 10,
-                                },
-                                hljs.QUOTE_STRING_MODE,
+                  // Strings (multi-line and single)
+                  {
+                    className: "string",
+                    begin: '"""',
+                    end: '"""',
+                    relevance: 10,
+                  },
+                  hljs.QUOTE_STRING_MODE,
 
-                                // Functions
-                                {
-                                    className: "title function_",
-                                    beginKeywords: "func",
-                                    end: /:/,
-                                    excludeEnd: true,
-                                    contains: [hljs.UNDERSCORE_TITLE_MODE],
-                                },
+                  // Functions
+                  {
+                    className: "title function_",
+                    beginKeywords: "func",
+                    end: /:/,
+                    excludeEnd: true,
+                    contains: [hljs.UNDERSCORE_TITLE_MODE],
+                  },
 
-                                // Classes
-                                {
-                                    className: "title class_",
-                                    beginKeywords: "class",
-                                    end: /:/,
-                                    excludeEnd: true,
-                                    contains: [hljs.UNDERSCORE_TITLE_MODE],
-                                },
+                  // Classes
+                  {
+                    className: "title class_",
+                    beginKeywords: "class",
+                    end: /:/,
+                    excludeEnd: true,
+                    contains: [hljs.UNDERSCORE_TITLE_MODE],
+                  },
 
-                                // Annotations (@something)
-                                {
-                                    className: "meta",
-                                    begin: /@[A-Za-z_]\w*/,
-                                },
+                  // Annotations (@something)
+                  {
+                    className: "meta",
+                    begin: /@[A-Za-z_]\w*/,
+                  },
 
-                                // .new() and method calls
-                                {
-                                    className: "built_in",
-                                    begin: /\.\s*[A-Za-z_]\w*\s*(?=\()/,
-                                    relevance: 0,
-                                },
-                            ],
-                        };
-
-                    })
-                }
-            },
-            // Learn about plugins: https://revealjs.com/plugins/
-            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
-        });
+                  // .new() and method calls
+                  {
+                    className: "built_in",
+                    begin: /\.\s*[A-Za-z_]\w*\s*(?=\()/,
+                    relevance: 0,
+                  },
+                ],
+              };
+            });
+          },
+        },
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
     </script>
-</body>
-
+  </body>
 </html>
