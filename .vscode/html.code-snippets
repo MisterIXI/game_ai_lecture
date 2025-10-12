@@ -1,0 +1,24 @@
+{
+  "reveal video exc": {
+    "prefix": "videx", 
+    "body": [
+            "<video",
+            "data-autoplay",
+            "controls",
+            "src=\"${1:assets/}\"",
+            "width=\"80%\"",
+            "></video>",
+    ],
+    "description": "Creates a revealjs video for exercise"
+  },
+  "godot code block":{
+    "prefix": "gdcode",
+    "body": [
+        "<pre>",
+        "\t<code class=\"langauge-gdscript\">",
+        "\t\t${1}",
+        "\t</code>",
+        "</pre>"
+    ]
+  }
+}
