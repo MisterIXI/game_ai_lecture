@@ -6,33 +6,58 @@
   display: grid;
   grid-template-columns: repeat(2, 45%);
   grid-template-rows: repeat(2, auto);
-  justify-content: center; /* centers the two 40% columns */
+  justify-content: center;
+  /* centers the two 40% columns */
   align-items: center;
-  gap: 0px; /* spacing between images */
+  gap: 0px;
+  /* spacing between images */
 }
 
-.grid4 > img {
-  width: 100%;       /* fill the grid cell */
-  height: auto;      /* keep aspect ratio */
-  object-fit: cover; /* or "contain" if you want full image visible */
+.grid4>img {
+  width: 100%;
+  /* fill the grid cell */
+  height: auto;
+  /* keep aspect ratio */
+  object-fit: cover;
+  /* or "contain" if you want full image visible */
   border-radius: 8px;
   display: block;
   margin: 0px;
 }
 
-.reveal img.fit-height{
-    max-height: 60vh;
+.reveal img.fit-height {
+  max-height: 60vh;
 }
 
-.reveal .no-gap{
-    margin: 0;
+.reveal .no-gap {
+  margin: 0;
 }
 
+.reveal section.big {
+  height: 60vh;
+}
 
-.reveal p.smol{
+.reveal section.big pre {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+.reveal section.big code{
+  max-height: 600px;
+}
+
+.reveal p.smol {
+  margin: 0;
   font-size: large;
 }
 
-.pixelated{
+.pixelated {
   image-rendering: pixelated;
+}
+
+.reveal code {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding-inline: 10px;
 }
