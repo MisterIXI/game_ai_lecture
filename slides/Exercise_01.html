@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Exercise_01 - PONG</title>
+
+    <link rel="stylesheet" href="../dist/reset.css" />
+    <link rel="stylesheet" href="../dist/reveal.css" />
+    <!-- <link rel="stylesheet" href="dist/theme/white.css"> -->
+    <link rel="stylesheet" href="../dist/theme/beige.css" />
+    <!-- <link rel="stylesheet" href="../dist/theme/black.css" /> -->
+    <link rel="stylesheet" href="assets/custom.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <!-- <link rel="stylesheet" href="//unpkg.com/@catppuccin/highlightjs@1.0.1/css/catppuccin-latte.css"> -->
+    <!-- <link rel="stylesheet" href="//unpkg.com/@catppuccin/highlightjs@1.0.1/css/catppuccin-macchiato.css"> -->
+    <link
+      rel="stylesheet"
+      href="../plugin/highlight/catppuccin-macchiato.css"
+    />
+    <!-- <link rel="stylesheet" href="plugin/highlight/monokai.css"> -->
+    <!-- <link rel="stylesheet" href="plugin/highlight/code_highlight.css"> -->
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>Exercise 01</h1>
+          <h2>PONG</h2>
+        </section>
+        <section>
+          <h4>Projekt erstellen</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/01_Create_Project.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <ul>
+              <li>Godot Öffnen</li>
+              <li><code>Create</code></li>
+              <li>Projektnamen und -pfad eingeben</li>
+              <li><code>Create</code></li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h4>(Optional:) Externer Editor</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              width="80%"
+              src="assets/exc01/02_external_ide.mp4"
+            ></video>
+            <p class="smol">
+              Bearbeiten der Skripte in vscode oder anderen Editoren statt in
+              Godot direkt.
+            </p>
+            <p class="smol">
+              Notiz: Den internen Editor auszuprobieren lohnt sich durchaus, da
+              er sehr nette Features hat.
+            </p>
+          </section>
+          <section>
+            <p>
+              (Beispiel an vscode
+              <a
+                href="https://docs.godotengine.org/en/stable/tutorials/editor/external_editor.html"
+                >hier schauen für andere</a
+              >)
+            </p>
+            <ul>
+              <li>
+                <code>Editor</code>&rarr;<code>Editor Settings...</code
+                >&rarr;<code>Text Editor/External</code>
+              </li>
+              <ul>
+                <li>
+                  <code>Exec Path</code>: [vscode path] (kann in appdata liegen)
+                </li>
+                <li>
+                  <code>Exec Flags</code>:
+                  <code>{project} --goto {file}:{line}:{col}</code>
+                </li>
+                <li><code>Use External Editor</code>: True</li>
+              </ul>
+              <li><code>Script</code></li>
+              <ul>
+                <li>(In Script Fenster:) <code>Debug</code></li>
+                <li><code>Debug with External Editor</code></li>
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h4>Reload Hotkey einrichten</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/03_reload_hotkey.mp4"
+              width="80%"
+            ></video>
+            <p class="smol">Um das Projekt schnell neu zu laden</p>
+          </section>
+          <section>
+            <ul>
+              <li>
+                <code>Editor</code>&rarr;<code>Editor Settings...</code
+                >&rarr;<code>Shortcuts</code>
+              </li>
+              <li>Suchen nach <code>reload</code></li>
+              <li><code>Reload Current Project</code>&rarr; ALT+R</li>
+              <li>(Zum testen: <code>ALT+R</code> drücken)</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h4>Neue Szene anlegen</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/04_create_main_scene.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <ul>
+              <li>In <code>FileSystem</code></li>
+              <ul>
+                <li>Rechstklick &rarr; <code>new Folder</code></li>
+                <li><code>scenes</code> nennen</li>
+                <li>Rechstklick auf <code>scenes</code></li>
+                <li><code>Create New</code> &rarr; <code>Scene...</code></li>
+                <li>
+                  Rechtsklick auf die Scene &rarr;
+                  <code>Set as Main Scene</code>
+                </li>
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h4>Projekt Viewport einstellen</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/05_viewport_project_settings.mp4"
+              width="80%"
+            ></video>
+            <p class="smol">Legt die Größe des Spielfensters fest</p>
+          </section>
+          <section>
+            <ul>
+              <li>
+                <code>Project</code> &rarr;<code>Project Settings...</code
+                >&rarr;<code>General</code>
+              </li>
+              <li><code>Display</code>&rarr;<code>Window</code></li>
+              <ul>
+                <li><code>Viewport Width</code>: 1280</li>
+                <li><code>Viewport Heigth</code>: 720</li>
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h4>Schwarzer Hintergrund hinzufügen</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/06_black_background.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <ul>
+              <li>In <code>Scene</code></li>
+              <ul>
+                <li>auf "Scene root" (<code>PongGame</code>) Rechtsklick</li>
+                <li><code>Add Child Node</code></li>
+                <li>
+                  nach <code>sprite</code> suchen und
+                  <code>Sprite2D</code> hinzufügen
+                </li>
+                <li>
+                  Doppelklick oder F2 zum umbenennen in <code>Background</code>
+                </li>
+              </ul>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <li><code>Background</code> auswählen</li>
+              <li>In <code>Inspector</code></li>
+              <ul>
+                <li>
+                  Bei <code>Texture</code> Linksklick &rarr;
+                  <code>GradientTexture2D</code>
+                </li>
+                <li>Auf die Textur klicken</li>
+                <li>Auf <code>Gradient</code> klicken</li>
+                <li>
+                  Rechtsklick auf die rechte Farbe (weiß) damit der Gradient nur
+                  Schwarz ist
+                </li>
+                <li>In der Textur die Größe setzen</li>
+                <ul>
+                  <li><code>Width</code>: 1280</li>
+                  <li><code>Height</code>: 720</li>
+                </ul>
+              </ul>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <li>Immer noch in den Settings von <code>Background</code></li>
+              <li>
+                Unten in
+                <code>Node2D</code>&rarr;<code>Transform</code>&rarr;<code
+                  >Position</code
+                >
+              </li>
+              <ul>
+                <li><code>x</code>: 1280/2</li>
+                <li><code>y</code>: 720/2</li>
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h4>Paddel Szene erstellen</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/07_paddle_scene.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <ul>
+              <li>Ordner anlegen <code>/scenes/player</code></li>
+              <li>
+                In Ordner <code>Create new</code>&rarr;<code>Scene...</code>
+              </li>
+              <ul>
+                <li><code>Root Type</code>: <code>CharacterBody2D</code></li>
+                <li><code>Scene Name</code>: paddle</li>
+              </ul>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <li>Zu Paddle Szene hinzufügen:</li>
+              <li><code>CollisionShape2D</code></li>
+              <ul>
+                <li><code>Shape</code>: <code>RectangleShape2D</code></li>
+                <li><code>Size</code> von Shape auf (30,120)</li>
+              </ul>
+              <li><code>Sprite2D</code></li>
+              <ul>
+                <li>Texture: <code>GradientTexture2D</code></li>
+                <li>Größe von Textur (30,120)</li>
+                <li>Gradient von Textur auf pur Weiß stellen</li>
+              </ul>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <li>
+                Bei Paddle Node im <code>Inspector</code> unten bei
+                <code>Node</code>:
+              </li>
+              <li><code>Script</code>: <code>New Script...</code></li>
+              <ul>
+                <li>im Pfad <code>/scenes/player/paddle.gd</code></li>
+                <li>Typ <code>CharacterBody2D</code></li>
+              </ul>
+            </ul>
+            <p>Skript Inhalt:</p>
+            <pre>
+              <code class="language-gdscript">
+class_name Padddle
+extends CharacterBody2D
+              </code>
+            </pre>
+          </section>
+        </section>
+        <section>
+          <h4>Beide Padddles als Szenen Instantiieren</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/08_insert_paddle_scenes.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <ul>
+              <li>
+                Szene <code>/scenes/player/paddle.tscn</code> via drag&drop in
+                Szene ziehen
+              </li>
+              <li>Erste Instanz: <code>PaddleA</code></li>
+              <li><code>Transform</code></li>
+              <ul>
+                <li><code>x</code>: 30</li>
+                <li><code>y</code>: 720/2 (360)</li>
+              </ul>
+              <li>Zweite Instanz: <code>PaddleB</code></li>
+              <li><code>Transform</code></li>
+              <ul>
+                <li><code>x</code>: 1280-30 (1250)</li>
+                <li><code>y</code>: 720/2 (360)</li>
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h4>Paddle Script</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/09_paddle_script.mp4"
+              width="80%"
+            ></video>
+            <p class="smol">Code unten erklärt</p>
+          </section>
+          <section data-auto-animate>
+            <pre data-id="code-animation">
+    <code class="language-gdscript" data-trim data-line-numbers="|3-5|6-9|10-13|15-23|24-27">class_name Paddle
+extends CharacterBody2D
+#-- Die Geschwindigkeit des Paddles. Kann man dank @export pro Instanz einstellen.
+## speed of paddle movement
+@export var speed: float = 400.0
+#-- Normalerweise würde man die Größe direkt auslesen aus CollisionShape2D oder Sprite2D
+#-- Hier zu vereinfachung von späteren Code hardcoded
+## size of paddle (used for ball calculation later)
+const size: float = 120.0
+#-- Kann man sich vorstellen wie ein Joystick
+#-- Nach unten -1 und nach oben 1
+## movement direction: -1.0 down and 1.0 up
+var movement: float = 0.0
+
+func _physics_process(delta):
+	# If Movement is not zero
+	if movement != 0.0:
+		velocity.x = 0
+		#-- Hier wird zur Sicherheit die movement Variable clamped (min -1 und max 1)
+		#-- falls die variable falsch von außen gesetzt wird.
+		#-- das wird noch mit _speed_ multipliziert für die richtige Geschwindigkeit.
+		# set vertical velocity and clamp movement in case it's set incorrectly
+		velocity.y = clampf(movement, -1.0, 1.0) * speed
+		#-- move_and_collide hat einen Rückgabewert bei Kollision; wird hier verworfen
+		#-- Wir nutzen hier nicht move_and_slide, da wir an der Wand stehen bleiben wollen.
+		# move until hitting an obstacle
+		move_and_collide(velocity * delta)
+
+
+    </code>
+  </pre>
+          </section>
+        </section>
+        <section>
+          <h4>Input Actions einrichten</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/10_input_actions.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <ul>
+              <li>
+                In <code>Project</code>&rarr;<code>Project Settings...</code
+                >&rarr;<code>Input Map</code>
+              </li>
+              <li>
+                Input actions einrichten (Namen eingeben und hinzufügen, dann
+                Key festlegen)
+              </li>
+              <ul>
+                <li><code>PaddleAUp</code>: <code>W</code></li>
+                <li><code>PaddleADown</code>: <code>S</code></li>
+                <li><code>PaddleBUp</code>: <code>&uarr;</code></li>
+                <li><code>PaddleBDown</code>: <code>&darr;</code></li>
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h4><code>Human Controller</code> erstellen und einrichten</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/11_human_controller.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <p>
+              neues Skript
+              <code>/scenes/player/human_controller.gd</code> anlegen
+            </p>
+            <pre>
+              <code class="langauge-gdscript">class_name HumanController
+extends Node
+
+@export var action_up: String = "PaddleAUp"
+@export var action_down: String = "PaddleADown"
+
+@onready var paddle: Paddle = get_parent()
+
+func _physics_process(_delta):
+	paddle.movement = Input.get_axis(action_up, action_down)
+              </code>
+            </pre>
+            <p>
+              Die exportierten Action Strings geben die Möglichkeit die beiden
+              Spieler abzubilden ohne zwei Skripte zu schreiben.
+            </p>
+          </section>
+        </section>
+        <section>
+          <h4>Seitenwände</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/12_Side_walls.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <ul>
+              <li>
+                <code>StaticBody2D</code> hinzufügen und
+                <code>Walls</code> benennen
+              </li>
+              <li>Darunter eine <code>CollisionShape2D</code> hinzufügen</li>
+              <ul>
+                <li>Darin eine <code>RectangleShape2D</code> definieren</li>
+                <li>Größe <code>(1280, 20)</code></li>
+                <li>Position <code>(1280/2, -10)</code></li>
+              </ul>
+              <li>Die <code>CollisionShape2D</code> duplizieren mit CTRL+D</li>
+              <ul>
+                <li>Position <code>(1280/2, 730)</code></li>
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h4>Goal Areas</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/13_Goal_Areas.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <ul>
+              <li>
+                Unter der <code>PongGame</code> node eine
+                <code>Area2D</code> hinzufügen
+              </li>
+              <ul>
+                <li>Name: <code>GoalLeft</code></li>
+              </ul>
+              <li>Darunter eine <code>CollisionShape2D</code> hinzufügen</li>
+              <ul>
+                <li>Größe: <code>(20, 720+40)</code></li>
+                <li>Position: <code>(-10, 720/2)</code></li>
+                <li>Debug Farbe: ca. Rot (nur zur Unterscheidung im Editor)</li>
+              </ul>
+              <li>
+                Das <code>Area2D</code> mit der
+                <code>CollisionShape2D</code> Gruppieren
+              </li>
+              <ul>
+                <li>Beide mit Shift anklicken</li>
+                <li>CTRL+G zum Gruppieren</li>
+              </ul>
+              <li>Das Area Duplizieren mit CTRL+D</li>
+              <ul>
+                <li>Area umbenennen auf <code>GoalRight</code></li>
+                <li>Position von Area auf <code>(1280+10, 720/2)</code></li>
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h4>Pong Ball erstellen</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/14_Ball_Nodes.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <ul>
+              <li>
+                Neuen <code>CharacterBody2D</code> unter
+                <code>PongGame</code> erstellen
+              </li>
+              <ul>
+                <li>Name: PongBall</li>
+                <li>
+                  Im Inspector unter <code>Node</code> Gruppe "ball" hinzufügen
+                </li>
+              </ul>
+              <li>Unter dem Ball eine <code>Sprite2D</code> node hinzufügen</li>
+              <ul>
+                <li>Texture &rarr; <code>GradientTexture2D</code></li>
+                <li>Gradient auf pur Weiß stellen</li>
+                <li>größe der Textur auf <code>(40, 40)</code></li>
+              </ul>
+              <li>
+                Unter dem Ball eine <code>CollisionShape2D</code> hinzufügen
+              </li>
+              <ul>
+                <li>Shape: <code>RectangleShape2D</code></li>
+                <li>Größe: <code>(40, 40)</code></li>
+              </ul>
+              <li>Das Ganze mit CTRL+G Gruppieren</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h4>Pong Ball Code</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/15_Ball_script.mp4"
+              width="80%"
+            ></video>
+            <p class="smol">Code erklärung unten</p>
+          </section>
+          <section>
+            <pre>
+              <code class="langauge-gdscript" data-line-numbers="|1-10|12-25|27-38|39-50">class_name PongBall
+extends CharacterBody2D
+const BOUNCE_ANGLE: float = 45
+
+#-- Signal bei Paddle-Ball Kollision worauf Effekte oder KIs reagieren können
+signal ball_collision(collision: KinematicCollision2D)
+
+#-- Start Geschwindigkeit geben (primär zum testen am Anfang)
+func _ready():
+	velocity = Vector2(300, 0)
+
+func _physics_process(delta):
+#-- Solange gerade aus bewegen bis eine Kollision auftritt
+	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
+#-- Unterscheidung zwischen Paddle und anderem damit die Paddle auch Zielen können
+	if collision:
+		# check if collided with a paddle
+		var collider: Node = collision.get_collider()
+		if collider.is_in_group("paddles"):
+			# make special bounce to make aiming possible
+			_handle_paddle_collision(collision)
+			ball_collision.emit(collision)
+		else:
+			# bounce normally
+			velocity = velocity.bounce(collision.get_normal())
+
+func _handle_paddle_collision(collision: KinematicCollision2D) -> void:
+#-- extra Fehlerbehandlung falls die Gruppe "Paddle" fälschlich gesetzt wird
+	if collision.get_collider() is not Paddle:
+		push_warning("Collision with non-Paddle object: %s" % collision.get_collider().name)
+		return
+#-- Lustige Mathe um das Bounce verhalten ähnlich zu Breakout zu machen
+#-- Nur bedingt das originale PONG verhalten, aber macht es interessanter
+#-- Großteil des Codes kann weggelassen werden ohne dieses Sonderverhalten
+	# if the ball hits a paddle, adjust the angle based on where it hit
+	var paddle: Paddle = collision.get_collider()
+	var paddle_center: Vector2 = paddle.global_position
+	var hit_position: Vector2 = collision.get_position()
+	# calculate how far up or down the paddle the ball collided
+	var diff = hit_position.y - paddle_center.y
+	diff = diff / (paddle.size / 2.0)
+	var magnitude: float = velocity.length()
+	velocity = collision.get_normal() * (magnitude + abs(diff) * 100.0)
+#-- Der Vektor wird in eine Richtung rotiert um den gesteuerten Bounce zu machen
+	if velocity.x > 0:
+		# when going left
+		velocity = velocity.rotated(deg_to_rad(BOUNCE_ANGLE * diff))
+	else:
+		# when going right
+		velocity = velocity.rotated(deg_to_rad(-BOUNCE_ANGLE * diff))
+              </code>
+            </pre>
+          </section>
+        </section>
+        <section>
+          <h4>Gruppe <code>paddles</code> zu den Paddles hinzufügen</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/16_Paddle_Group.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <ul>
+              <li>In der Szene <code>/scenes/player/paddle.tscn</code></li>
+              <ul>
+                <li>Dem Paddle die Gruppe <code>paddles</code> hinzufügen</li>
+              </ul>
+              <li>
+                Das sollte automatisch in der <code>PongGame</code> Szene
+                aktualisiert werden
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h4>Pong Game Skript</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/17_Pong_Game_Skript.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <pre>
+              <code class="langauge-gdscript" data-line-numbers="|1-14|16-35|37-53">class_name PongGame
+extends Node2D
+
+@export var ball: PongBall
+@export var paddle_left: Paddle
+@export var paddle_right: Paddle
+
+@export var label_a: Label
+@export var label_b: Label
+var score_a: int = 0
+var score_b: int = 0
+
+signal kickoff
+signal goal(goal_on_right: bool)
+
+func _ready():
+	reset_ball(true)
+
+#-- Diese beiden Funktionen werden auf Tore reagieren
+#-- Noch sind die nicht verbunden und werden nicht aufgerufen
+func _on_goal_left_body_entered(body: Node2D) -> void:
+	if body.is_in_group("ball"):
+		score_b += 1
+		label_b.text = str("%02d" % score_b)
+		reset_ball(true)
+		print("Goal for Player B! Score: ", score_b)
+		goal.emit(true)
+
+func _on_goal_right_body_entered(body: Node2D) -> void:
+	if body.is_in_group("ball"):
+		score_a += 1
+		label_a.text = str("%02d" % score_a)
+		reset_ball(false)
+		print("Goal for Player A! Score: ", score_a)
+		goal.emit(false)
+
+func reset_paddle_pos() -> void:
+	paddle_left.position.y = 720 / 2.0
+	paddle_right.position.y = 720 / 2.0
+
+#-- Ball wird in die Mitte gesetzt mit leichten offset von position und Richtung
+#-- Damit ist das Spiel ein bisschen interessanter
+func reset_ball(towards_left: bool = true) -> void:
+	ball.position = Vector2(1280.0/2.0, 720.0/2.0) + Vector2.UP * (randf() - 0.5) * 100
+	ball.velocity = Vector2.ZERO
+	await get_tree().create_timer(1.0).timeout
+	if towards_left:
+		ball.velocity = Vector2(-300, 0)
+	else:
+		ball.velocity = Vector2(300, 0)
+	# rotate by 10% of 180 degrees for random kickoff
+	ball.velocity = ball.velocity.rotated(randf() * PI * 0.1)
+	kickoff.emit()
+              </code>
+            </pre>
+          </section>
+        </section>
+        <section>
+          <h4>Pong Game Signale verbinden</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/18_Pong_Game_Signals.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <ul>
+              <li>
+                Signale der beiden Tore zu <code>PongGame</code> verbinden
+              </li>
+              <ul>
+                <li>
+                  <code>GoalLeft</code>&rarr;Signal <code>body_entered</code>
+                </li>
+                <li>
+                  &rarr;<code>PongGame</code>&rarr;<code
+                    >_on_goal_left_body_entered</code
+                  >
+                </li>
+                <li>
+                  <code>GoalRight</code>&rarr;Signal <code>body_entered</code>
+                </li>
+                <li>
+                  &rarr;<code>PongGame</code>&rarr;<code
+                    >_on_goal_right_body_entered</code
+                  >
+                </li>
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h4>Simple KI</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/19_Simple_AI.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <pre>
+              <code class="language-gdscript" data-line-numbers="|1-12|14-19|21-24">class_name SimpleAI
+extends Node
+
+@export var ball: PongBall
+@onready var paddle: Paddle = get_parent()
+@export var avoid_vibration: bool = true
+
+func _physics_process(delta):
+	if avoid_vibration:
+		_chase_ball_no_vibration(delta)
+	else:
+		_chase_ball_simple()
+
+#-- Wir müssen hier bei der Movement nicht auf -1 bis 1 begrenzen
+#-- da wir das bereits im Ball Skript gemacht haben.
+#-- Hier gibt es zwei Versionen der Bewegungen, eine sehr einfache
+## just move towards the ball
+func _chase_ball_simple() -> void: 
+	paddle.movement = ball.position.y - paddle.position.y
+
+#-- und eine die die gebrauchte Distanz Ausrechnet und macht
+## try to not overshoot
+func _chase_ball_no_vibration(delta: float) -> void:
+	paddle.movement = (ball.position.y - paddle.position.y) / paddle.speed / delta
+              </code>
+            </pre>
+          </section>
+        </section>
+        <section>
+          <h4>Vorbereitung für Predictive KI</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/20_Predictive_AI_Prep.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <ul>
+              <li>
+                Unter <code>PongGame</code> node einen
+                <code>StaticBody2D</code> erstellen
+              </li>
+              <ul>
+                <li>Name: <code>DetectionWallLeft</code></li>
+                <li>CollisionShape2D: <code>RectangleShape2D</code></li>
+                <li>CollisionShape2D Größe: <code>(30, 720/2)</code></li>
+                <li>Farbe der Shape auf Grün setzen</li>
+              </ul>
+              <li>StaticBody und CollisionShape mit CTRL+G Gruppieren</li>
+              <li>
+                Gruppe <code>detectors</code> auf den StaticBody hinzufügen
+              </li>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <li>CollisionLayer setzen auf</li>
+              <ul>
+                <li><code>Layer</code>: 2</li>
+                <li><code>Detection</code>: -</li>
+              </ul>
+              <li>CollisionLayer 2 umbenennen auf "DetectionLeft"</li>
+              <li>CollisionLayer 3 umbenennen auf "DetectionRight"</li>
+              <li>
+                Shape Duplizieren mit CTRL+D mit Name
+                <code>DetectionWallRight</code>
+              </li>
+              <li>Position Wand Links: <code>(30, 720/2)</code></li>
+              <li>Position Wand Rechts: <code>(1280-30, 720/2)</code></li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h4>Predictive KI hinzufügen</h4>
+          <section>
+            <video
+              data-autoplay
+              controls
+              src="assets/exc01/21_Preddictive_AI_add.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section class="big">
+            <pre>
+              <code class="language-gdscript"  data-line-numbers="|1-12|14-19|20-29|30-37|39-51|53-64|65-79|80-101|103-115">class_name PredictiveAI
+extends Node2D
+
+@export var ball: PongBall
+#-- detector_layer ist für den Raycast als Bitmaske für die Layer.
+#-- Eine Seite braucht Layer 1 und 2, die andere 1 und 3
+@export var detector_layer: int = 0b0011
+@onready var paddle: Paddle = get_parent()
+signal target_predicted(target_height: float)
+
+var target_y: float = 720.0 / 2.0 # Default to center of the screen
+var raycast_path: Array = []
+
+func _physics_process(delta):
+	# go towards the target Y position
+	paddle.movement = (target_y - paddle.position.y) / paddle.speed / delta
+
+  func _on_ball_collision(collision: KinematicCollision2D) -> void:
+	var collider: Node = collision.get_collider()
+#-- Wenn der Ball das andere Paddle trifft, rechne einen neue Prediction aus
+	# check if the ball just collided with the other paddle
+	if collider.is_in_group("paddles") and collider != paddle:
+    raycast_path.clear()
+    # raycast and bounce until hit a detection layer
+    var curr_pos: Vector2 = collision.get_position()
+    raycast_path.append(curr_pos)
+    var direction: Vector2 = ball.velocity.normalized()
+    calc_new_target_y(curr_pos, direction, collider)
+    queue_redraw()
+#-- Wenn der Ball das eigene Paddle trifft, lösche die Visualisierung
+#-- und zurück auf neutrale Position
+	elif collider == paddle:
+		# if the ball hit itself, just set the target to the center
+		target_y = 720.0 / 2.0
+		raycast_path.clear()
+		# print("Ball hit itself, resetting target to center.")
+		queue_redraw()
+
+#-- Bei Kickoff muss getestet werden ob der Ball auf das eigene Paddle zugeht
+#-- dafür wird verglichen ob der Ball links vom Paddle ist und nach rechts geht
+#-- und umgekehrt
+func _on_kickoff() -> void:
+	var ball_left_of_paddle: bool = ball.global_position.x < paddle.global_position.x
+	if ((ball_left_of_paddle and ball.velocity.x > 0.0)
+		or
+		(not ball_left_of_paddle and ball.velocity.x < 0.0)):
+		calc_new_target_y(
+			ball.global_position,
+			ball.velocity.normalized(),
+			null
+		)
+
+#-- Um eine Prediction zu machen werden raycasts geschossen bis eine Wand getroffen wird 
+#-- und reflektiert. Das wirdd wiederholt bis ein detector getroffen wird.
+func calc_new_target_y(start_pos: Vector2, start_dir: Vector2, prev_collider: Node) -> void:
+	var curr_pos: Vector2 = start_pos
+	var direction: Vector2 = start_dir
+	var emergency_counter: int = 0
+	var ray_length: float = 2000.0 # Arbitrary long distance
+	var is_finished: bool = false
+	var ray_end: Vector2 = start_pos + start_dir * ray_length
+	var space_state = paddle.get_world_2d().direct_space_state
+	# fallback to paddle if no previous collider is provided
+	var last_collider: Node = prev_collider if prev_collider else paddle
+	while not is_finished:
+			emergency_counter += 1
+			if emergency_counter > 50:
+				push_error("Emergency counter exceeded 100. Stopping raycast to prevent infinite loop.")
+				return
+			# print("dir: ", direction)
+			var query = PhysicsRayQueryParameters2D.create(
+				curr_pos,
+				ray_end,
+				detector_layer,
+				[last_collider, paddle, ball],
+				
+			)
+			query.hit_from_inside = false
+			var result = space_state.intersect_ray(query)
+			if result.is_empty():
+				push_error("Raycast did not hit anything. Aborting...")
+				return
+			if result["collider"].is_in_group("detectors"):
+				is_finished = true
+				target_y = result["position"].y
+				target_y = paddle.get_parent().to_local(Vector2(0, target_y)).y
+				target_predicted.emit(result["position"].y)
+				raycast_path.append(result["position"])
+				target_y += (randf() - 0.5) * 40 # Add some randomness to the target Y position
+				# print("target_y set to: ", target_y)
+			else:
+				if result["normal"] == Vector2.ZERO:
+					# print("pos: ", result["position"])
+					push_error("Raycast hit a collider with no normal. Aborting...")
+					return
+				curr_pos = result["position"]
+				direction = direction.bounce(result["normal"])
+				ray_end = curr_pos + direction * ray_length
+				# print("bounce at: ", curr_pos)
+				raycast_path.append(curr_pos)
+				last_collider = result["collider"]
+
+#-- Mit der Draw funktion wird direkt auf das malen der Node2D zugegriffen
+#-- hier wird der zuvor gespeicherte predictive path gemalt
+#-- außerdem werden Start und Ende markiert.
+func _draw():
+	if raycast_path.size() > 0:
+		var draw_arr: Array = []
+		for point in raycast_path:
+			draw_arr.append(point)
+		# print(raycast_path)
+		for i in range(raycast_path.size() - 1):
+			draw_line(draw_arr[i], draw_arr[i + 1], Color(1, 0, 0), 3)
+		draw_circle(draw_arr[0], 5, Color(0, 1, 0)) # Start point
+		draw_circle(draw_arr[-1], 5, Color(0, 0, 1)) # End point
+              </code>
+            </pre>
+          </section>
+          <section>
+            <ul>
+              <li>
+                <code>PredictiveAI</code> node unter
+                <code>PadddleLeft</code> hinzufügen
+              </li>
+              <li>
+                AI Node <code>Top Level</code> machen
+                (<code>CanvasItem/Visibility/TopLevel</code>)
+              </li>
+              <li><code>PongBall</code> in export variable setzen</li>
+              <li>
+                Signal <code>kickoff</code> von <code>PongGame</code> verbinden
+                zu <code>_on_kickoff()</code>
+              </li>
+              <li>
+                Signal <code>ball_collision</code> von
+                <code>PongBall</code> verbinden zu
+                <code>_on_ball_collision()</code>
+              </li>
+              <li>
+                (Wenn diese KI rechts hinzugefügt wird die
+                <code>DetectorLayer</code> von 3 auf 5 setzen)
+              </li>
+            </ul>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="../dist/reveal.js"></script>
+    <script src="../plugin/notes/notes.js"></script>
+    <script src="../plugin/markdown/markdown.js"></script>
+    <script src="../plugin/highlight/highlight.js"></script>
+
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+
+      Reveal.initialize({
+        width: 1280,
+        height: 720,
+        margin: 0.04,
+        hash: true,
+        pdfSeparateFragments: false,
+        slideNumber: "h/v",
+        highlight: {
+          highlightLanguages: true,
+          beforeHighlight: (hljs) => {
+            hljs.registerLanguage("gdscript", function () {
+              "use strict";
+              return {
+                keywords: {
+                  // Core language keywords (Godot 4)
+                  keyword:
+                    "class class_name extends is func signal static const enum var " +
+                    "breakpoint if elif else for while match continue pass return break " +
+                    "in as await and or not self super void ",
+
+                  // Annotations
+                  meta:
+                    "@export @onready @rpc @icon @tool @warning_ignore " +
+                    "@deprecated @must_use @static_unload",
+
+                  // Literals & constants
+                  literal: "true false null",
+
+                  // Built-in constants
+                  variable: "PI TAU INF NAN ",
+
+                  // Built-in functions (Godot 4, GDScript 2.0)
+                  built_in:
+                    "abs acos acosh asin asinh atan atanh atan2 bytes_to_var ceil char clamp " +
+                    "conj cos cosh cbrt db_to_linear deg_to_rad dict_to_inst ease exp expm1 " +
+                    "floor fmod fposmod hash inst_to_dict instance_from_id inverse_lerp " +
+                    "is_equal_approx is_finite is_inf is_instance_valid is_nan is_zero_approx " +
+                    "len lerp lerpf lerp_angle linear_to_db load log log2 max min move_toward " +
+                    "nearest_po2 ord parse_json polar_to_cartesian posmod pow preload print " +
+                    "print_debug print_stack printerr printraw prints printt push_error push_warning " +
+                    "rad_to_deg rand_from_seed rand_seed randf randi randomize range round seed " +
+                    "sign sin sinh smoothstep sqrt step_decimals stepify str str_to_var tan tanh " +
+                    "to_json type_exists typeof validate_json var_to_bytes var_to_str weakref " +
+                    "wrapf wrapi ",
+
+                  // Engine types
+                  type:
+                    "String Array Dictionary Vector2 Vector2i Vector3 Vector3i Vector4 Rect2 Rect2i " +
+                    "Color Node Node2D CharacterBody2D RigidBody2D StaticBody2D Area2D " +
+                    "CollisionShape2D CollisionPolygon2D Sprite2D AnimatedSprite2D TileMap " +
+                    "Camera2D NavigationRegion2D CanvasItem Control Button Label LineEdit TextEdit " +
+                    "Container Panel TextureRect GridContainer VBoxContainer HBoxContainer " +
+                    "SceneTree Resource PackedScene AnimationPlayer AnimationTree Timer Tween " +
+                    "Shader ShaderMaterial Mesh MeshInstance3D Camera3D Light3D WorldEnvironment " +
+                    "AudioStreamPlayer2D AudioStreamPlayer3D Input Event File PackedByteArray " +
+                    "RID Callable Signal Variant",
+                },
+
+                contains: [
+                  hljs.HASH_COMMENT_MODE,
+                  hljs.NUMBER_MODE,
+
+                  // Strings (multi-line and single)
+                  {
+                    className: "string",
+                    begin: '"""',
+                    end: '"""',
+                    relevance: 10,
+                  },
+                  hljs.QUOTE_STRING_MODE,
+
+                  // Functions
+                  {
+                    className: "title function_",
+                    beginKeywords: "func",
+                    end: /:/,
+                    excludeEnd: true,
+                    contains: [hljs.UNDERSCORE_TITLE_MODE],
+                  },
+
+                  // Classes
+                  {
+                    className: "title class_",
+                    beginKeywords: "class",
+                    end: /:/,
+                    excludeEnd: true,
+                    contains: [hljs.UNDERSCORE_TITLE_MODE],
+                  },
+
+                  // Annotations (@something)
+                  {
+                    className: "meta",
+                    begin: /@[A-Za-z_]\w*/,
+                  },
+
+                  // .new() and method calls
+                  {
+                    className: "built_in",
+                    begin: /\.\s*[A-Za-z_]\w*\s*(?=\()/,
+                    relevance: 0,
+                  },
+                ],
+              };
+            });
+          },
+        },
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+    <!-- <script>
+      Reveal.on("ready", function () {
+        // adjust this selector to target the slide(s) that contain your code
+        const slide = document.querySelector("section");
+
+        if (!slide) return;
+
+        // get all fragments Reveal knows about on this slide
+        const fragments = Reveal.getFragments(slide) || [];
+
+        // filter fragments that belong to a <pre><code> (i.e. the code-line highlight fragments)
+        const codeFragments = fragments.filter((f) => !!f.closest("pre"));
+
+        // for debugging: uncomment to inspect in console
+        // console.log('all fragments', fragments);
+        // console.log('codeFragments', codeFragments);
+
+        // For explanations, use a custom data attribute to identify them in order:
+        // <p class="fragment" data-expl-index="0">Test 1</p>
+        // <p class="fragment" data-expl-index="1">Test 2</p>
+        const expls = Array.from(slide.querySelectorAll("[data-expl-index]"));
+
+        // map each explanation to the corresponding code fragment (by order)
+        expls.forEach((expl, i) => {
+          const codeFrag = codeFragments[i];
+          if (codeFrag) {
+            // copy the Reveal fragment index from the code fragment so they fire together
+            expl.dataset.fragmentIndex = codeFrag.dataset.fragmentIndex;
+            console.log(expl.dataset.fragmentIndex)
+          } else {
+            // if no corresponding code fragment (safety), remove dataset to avoid mis-ordering
+            delete expl.dataset.fragmentIndex;
+          }
+        });
+      });
+    </script> -->
+  </body>
+</html>
