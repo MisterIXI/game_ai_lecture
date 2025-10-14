@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Exercise 00 - Godot Intro</title>
+
+    <link rel="stylesheet" href="../dist/reset.css" />
+    <link rel="stylesheet" href="../dist/reveal.css" />
+    <!-- <link rel="stylesheet" href="dist/theme/white.css"> -->
+    <link rel="stylesheet" href="../dist/theme/beige.css" />
+    <link rel="stylesheet" href="assets/custom.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <!-- <link rel="stylesheet" href="//unpkg.com/@catppuccin/highlightjs@1.0.1/css/catppuccin-latte.css"> -->
+    <!-- <link rel="stylesheet" href="//unpkg.com/@catppuccin/highlightjs@1.0.1/css/catppuccin-macchiato.css"> -->
+    <link
+      rel="stylesheet"
+      href="../plugin/highlight/catppuccin-macchiato.css"
+    />
+    <!-- <link rel="stylesheet" href="plugin/highlight/monokai.css"> -->
+    <!-- <link rel="stylesheet" href="plugin/highlight/code_highlight.css"> -->
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+          <section>
+            <h1>Exercise 00</h1>
+            <h2>Godot Getting Started</h2>
+          </section>
+          <section>
+            <h4>Durchlesen des Engine Intros</h4>
+            <img src="assets/exc00/getting_started.png" alt="" width="70%">
+            <p class="smol">Durchlesen der Einstiegsinformationen der Engine ist hilfreich wenn man das alles noch nicht kennt</p>
+            <p class="smol"><a href="https://docs.godotengine.org/en/stable/getting_started/introduction/index.html">https://docs.godotengine.org/en/stable/getting_started/introduction/index.html</a></p>
+          </section>
+          <section>
+            <h4>First 2D Game</h4>
+            <img src="assets/exc00/first_2d_game.png" alt="" width="65%">
+            <p class="smol">Folgen des (englischen) first 2D game tutorial hilft die Grundsätze der Engine zu lernen</p>
+            <p class="smol"><a href="https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html">https://docs.godotengine.org/en/stable/getting_started/first_2d_game/index.html</a></p>
+          </section>
+          <section>
+            <h4>First 3D Game</h4>
+            <img src="assets/exc00/first_3d_game.png" alt="" width="65%">
+            <p class="smol">Das 3D Tutorial hilft um auch 3D nodes zu verstehen, aber empfehlung ist eher nur das 2D game zu machen und dann Übung 01</p>
+            <p class="smol"><a href="https://docs.godotengine.org/en/stable/getting_started/first_3d_game/index.html">https://docs.godotengine.org/en/stable/getting_started/first_3d_game/index.html</a></p>
+          </section>
+        </div>
+    </div>
+
+    <script src="../dist/reveal.js"></script>
+    <script src="../plugin/notes/notes.js"></script>
+    <script src="../plugin/markdown/markdown.js"></script>
+    <script src="../plugin/highlight/highlight.js"></script>
+
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+
+      Reveal.initialize({
+        width: 1280,
+        height: 720,
+        margin: 0.04,
+        hash: true,
+        pdfSeparateFragments: false,
+        slideNumber: "h/v",
+        highlight: {
+          highlightLanguages: true,
+          beforeHighlight: (hljs) => {
+            hljs.registerLanguage("gdscript", function () {
+              "use strict";
+              return {
+                keywords: {
+                  // Core language keywords (Godot 4)
+                  keyword:
+                    "class class_name extends is func signal static const enum var " +
+                    "breakpoint if elif else for while match continue pass return break " +
+                    "in as await and or not self super void ",
+
+                  // Annotations
+                  meta:
+                    "@export @onready @rpc @icon @tool @warning_ignore " +
+                    "@deprecated @must_use @static_unload",
+
+                  // Literals & constants
+                  literal: "true false null",
+
+                  // Built-in constants
+                  variable: "PI TAU INF NAN ",
+
+                  // Built-in functions (Godot 4, GDScript 2.0)
+                  built_in:
+                    "abs acos acosh asin asinh atan atanh atan2 bytes_to_var ceil char clamp " +
+                    "conj cos cosh cbrt db_to_linear deg_to_rad dict_to_inst ease exp expm1 " +
+                    "floor fmod fposmod hash inst_to_dict instance_from_id inverse_lerp " +
+                    "is_equal_approx is_finite is_inf is_instance_valid is_nan is_zero_approx " +
+                    "len lerp lerpf lerp_angle linear_to_db load log log2 max min move_toward " +
+                    "nearest_po2 ord parse_json polar_to_cartesian posmod pow preload print " +
+                    "print_debug print_stack printerr printraw prints printt push_error push_warning " +
+                    "rad_to_deg rand_from_seed rand_seed randf randi randomize range round seed " +
+                    "sign sin sinh smoothstep sqrt step_decimals stepify str str_to_var tan tanh " +
+                    "to_json type_exists typeof validate_json var_to_bytes var_to_str weakref " +
+                    "wrapf wrapi ",
+
+                  // Engine types
+                  type:
+                    "String Array Dictionary Vector2 Vector2i Vector3 Vector3i Vector4 Rect2 Rect2i " +
+                    "Color Node Node2D CharacterBody2D RigidBody2D StaticBody2D Area2D " +
+                    "CollisionShape2D CollisionPolygon2D Sprite2D AnimatedSprite2D TileMap " +
+                    "Camera2D NavigationRegion2D CanvasItem Control Button Label LineEdit TextEdit " +
+                    "Container Panel TextureRect GridContainer VBoxContainer HBoxContainer " +
+                    "SceneTree Resource PackedScene AnimationPlayer AnimationTree Timer Tween " +
+                    "Shader ShaderMaterial Mesh MeshInstance3D Camera3D Light3D WorldEnvironment " +
+                    "AudioStreamPlayer2D AudioStreamPlayer3D Input Event File PackedByteArray " +
+                    "RID Callable Signal Variant",
+                },
+
+                contains: [
+                  hljs.HASH_COMMENT_MODE,
+                  hljs.NUMBER_MODE,
+
+                  // Strings (multi-line and single)
+                  {
+                    className: "string",
+                    begin: '"""',
+                    end: '"""',
+                    relevance: 10,
+                  },
+                  hljs.QUOTE_STRING_MODE,
+
+                  // Functions
+                  {
+                    className: "title function_",
+                    beginKeywords: "func",
+                    end: /:/,
+                    excludeEnd: true,
+                    contains: [hljs.UNDERSCORE_TITLE_MODE],
+                  },
+
+                  // Classes
+                  {
+                    className: "title class_",
+                    beginKeywords: "class",
+                    end: /:/,
+                    excludeEnd: true,
+                    contains: [hljs.UNDERSCORE_TITLE_MODE],
+                  },
+
+                  // Annotations (@something)
+                  {
+                    className: "meta",
+                    begin: /@[A-Za-z_]\w*/,
+                  },
+
+                  // .new() and method calls
+                  {
+                    className: "built_in",
+                    begin: /\.\s*[A-Za-z_]\w*\s*(?=\()/,
+                    relevance: 0,
+                  },
+                ],
+              };
+            });
+          },
+        },
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
