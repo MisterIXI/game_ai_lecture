@@ -859,7 +859,7 @@ func _physics_process(delta):
 	# go towards the target Y position
 	paddle.movement = (target_y - paddle.position.y) / paddle.speed / delta
 
-  func _on_ball_collision(collision: KinematicCollision2D) -> void:
+func _on_ball_collision(collision: KinematicCollision2D) -> void:
 	var collider: Node = collision.get_collider()
 #-- Wenn der Ball das andere Paddle trifft, rechne einen neue Prediction aus
 	# check if the ball just collided with the other paddle
