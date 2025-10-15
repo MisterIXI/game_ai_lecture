@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
 
-    <title>Exercise_01 - PONG</title>
+    <title>Exercise 01 - Pong</title>
 
     <link rel="stylesheet" href="../dist/reset.css" />
     <link rel="stylesheet" href="../dist/reveal.css" />
@@ -422,7 +422,7 @@ func _physics_process(delta):
               <code>/scenes/player/human_controller.gd</code> anlegen
             </p>
             <pre>
-              <code class="langauge-gdscript">class_name HumanController
+              <code class="language-gdscript">class_name HumanController
 extends Node
 
 @export var action_up: String = "PaddleAUp"
@@ -562,7 +562,7 @@ func _physics_process(_delta):
           </section>
           <section>
             <pre>
-              <code class="langauge-gdscript" data-line-numbers="|1-10|12-25|27-38|39-50">class_name PongBall
+              <code class="language-gdscript" data-line-numbers="|1-10|12-25|27-38|39-50">class_name PongBall
 extends CharacterBody2D
 const BOUNCE_ANGLE: float = 45
 
@@ -651,7 +651,7 @@ func _handle_paddle_collision(collision: KinematicCollision2D) -> void:
           </section>
           <section>
             <pre>
-              <code class="langauge-gdscript" data-line-numbers="|1-14|16-35|37-53">class_name PongGame
+              <code class="language-gdscript" data-line-numbers="|1-14|16-35|37-53">class_name PongGame
 extends Node2D
 
 @export var ball: PongBall
