@@ -11,6 +11,18 @@
     ],
     "description": "Creates a revealjs video for exercise"
   },
+    "reveal video slides": {
+    "prefix": "vidsl", 
+    "body": [
+            "<video",
+            "data-autoplay",
+            "loop",
+            "src=\"${1:assets/}\"",
+            "width=\"80%\"",
+            "></video>",
+    ],
+    "description": "Creates a revealjs video for slides"
+  },
   "godot code block":{
     "prefix": "gdcode",
     "body": [
