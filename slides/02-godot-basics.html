@@ -36,17 +36,711 @@
           <p>TH Bingen</p>
         </section>
         <section>
-            <h3>Die Godot Game engine</h3>
-            <img src="assets/slide02/godot_logo.svg" alt="The godot game engine logo" width="60%">
+          <h4>Vorab:</h4>
+          <h4>Neues Angebot der Studienerfolgsberatung</h4>
+          <h4>Psychosoziale Beratung</h4>
+          <ul>
+            <li>Frau Silke Kleinschmitt von der Caritas</li>
+            <li>Offene Sprechstunde:</li>
+            <ul>
+              <li>
+                <span style="text-decoration: underline">Wann:</span> Mittwochs
+                von 13:30-15:30
+              </li>
+              <li>
+                <span style="text-decoration: underline">Wo:</span> im Raum
+                0-110, Stadtgebäude/HHT
+              </li>
+            </ul>
+            <li>Alternativ per Mail/Telefon</li>
+            <li>Genauere infos im OLAT Kurs "Studienerfolgsberatung"</li>
+            <li>
+              <code
+                >Katalog&rarr;TH Bingen&rarr;Studieneinstieg und
+                Support&rarr;Studienerfolgsberatung</code
+              >
+            </li>
+          </ul>
         </section>
         <section>
-            <h3>Godot Geschichte</h3>
+          <section>
+            <img
+              class="r-stretch no-gap"
+              src="assets/Hochschulkalender_ws25_26.png"
+              alt="Hochschulkalenderplan"
+            />
+            <div>
+              <span style="color: #00ff75">■</span>Grün == Normalbetrieb |
+              <span style="color: #ffd800">■</span>Gelb == Projekttermine
+            </div>
+          </section>
+        </section>
+        <section class="big">
+          <h4>Projekt GDD</h4>
+          <pre>
+            <code class="language-markdown" data-line-numbers="|1-5|7-10|12-14|16-19|21-23|25-27|29-30|32-33"># Overview
+## Game Name
+## One-Sentence Pitch (Was ist die Kernidee des Spiels?)
+## Genre/Style (Platformer, Puzzle, Simulation, ...)
+## Gruppenmitglieder mit Matrikelnummer
+
+# Gameplay Loop
+## Player Action (Was macht der Spieler beim Spielen?)
+## Goal (Worauf arbeitet der Spieler hin/was muss bzw. will er machen?)
+## Win/Loss Conditions (Wann gewinnt oder verliert der Spieler?)
+
+# Aesthetics and Assets
+## Sourcen (Woher kommen die Assets? Ein/mehere Asset packs? Selbst machen?)
+## Spielperspektive (3D 3rd Person, FPS, 2D Top down, etc.)
+
+# Spiel KI
+## AI Systems (welche Systeme werden eingesetzt? FSM, Behaviour Trees, Machine Learning, ...)
+## What's hard (welche Hauptprobleme werden hierbei erwartet)
+## Godot Addons/Externe Tools (wenn welche genutzt werden sollen)
+
+# Scope & Milestones
+## Minimum Viable Product (Was ist das absolute minimum damit das Projekt spielbar ist?)
+## Milestones (Was sind die Meilensteine die das Projekt durchlaufen soll?)
+
+# Team & Responsibilities
+## Roles (Wer macht was? Macht jeder alles?)
+## Collaboration Tools (Welche Projekttools sind geplant? Also Git, Github, Gitlab, Trello, etc.)
+
+# Inspirations
+## Similar Games in Concept (Welche Spiele waren die Inspiration für die Idee, bzw welche ähnliche Mechaniken haben)
+
+# Experience level
+## Group Member Gamedev Experience (Je Gruppenmitglied: Bereits Erfahrung Mit Gamedev/dem Spielgenre/etc.)
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Die Godot Game engine</h3>
+          <img
+            src="assets/slide02/godot_logo.svg"
+            alt="The godot game engine logo"
+            width="60%"
+          />
+        </section>
+        <section>
+          <h3>Godot Geschichte</h3>
+          <ul>
+            <li>2014: Open source seit 2014</li>
+            <li>Januar 2018: Godot 3.0</li>
+            <li>März 2023: Godot 4.0</li>
+            <li>Gdscript "2.0" kam mit Godot 4</li>
+          </ul>
+        </section>
+        <section>
+          <h4>GDScript/C#/...</h4>
+          <ul class="naked">
+            <li>
+              GDScript ist die "Hauptsprache", Godot ist aber in C++
+              implementiert
+            </li>
+            <li>C# ist die best unterstützte Sprache neben GDScript</li>
+            <li>
+              C# benötigt aber die "Godot .net" Version, da noch nicht via "GD
+              Extension" supported
+            </li>
+            <li>diverse andere Sprachen via GD Extension supported</li>
+          </ul>
+        </section>
+        <section>
+          <h4><code>CharacterBody2D</code> default script in GDScript</h4>
+          <pre>
+            <code class="language-gdscript">extends CharacterBody2D
+
+@export var speed = 400
+
+func get_input():
+	var input_direction = Input.get_vector("left", "right", "up", "down")
+	velocity = input_direction * speed
+
+func _physics_process(delta):
+	get_input()
+	move_and_slide()</code>
+          </pre>
+        </section>
+        <section class="big">
+          <h4><code>CharacterBody2D</code> default script in C#</h4>
+          <pre>
+            <code class="language-cs">using Godot;
+
+public partial class Movement : CharacterBody2D
+{
+    [Export]
+    public int Speed { get; set; } = 400;
+
+    public void GetInput()
+    {
+
+        Vector2 inputDirection = Input.GetVector("left", "right", "up", "down");
+        Velocity = inputDirection * Speed;
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        GetInput();
+        MoveAndSlide();
+    }
+}</code>
+          </pre>
+        </section>
+        <section>
+          <section>
+            <h4>Godot Interface Übersicht</h4>
+            <img
+              src="assets/slide02/Godot_screenshot_plain.png"
+              alt=""
+              width="90%"
+            />
+          </section>
+          <section>
+            <p>Wissenswerte Abschnitte</p>
             <ul>
-                <li>Open source seit 2014</li>
-                <li>Version 3.0 release 29. Januar 2018</li>
-                <li>Godot 4.0 1. März 2023</li>
-                <li>Gdscript "2.0" kam mit Godot 4</li>
+              <li>SceneTree</li>
+              <li>Filesystem</li>
+              <ul>
+                <li>2D/3D Workspace</li>
+                <li>Script Workspace</li>
+                <li>Game Window</li>
+                <li>Asset Lib</li>
+              </ul>
+              <li>Node Settings</li>
+              <li>Inspector</li>
             </ul>
+          </section>
+        </section>
+        <section>
+          <h3>Was ist eine "Node"?</h3>
+          <ul>
+            <li class="fragment">
+              Fast alles in Godot ist eine <code>Node</code>
+            </li>
+            <li class="fragment">Pro Node nur ein Script</li>
+            <li class="fragment">Node</li>
+            <ul>
+              <li class="fragment">Node3D</li>
+              <li class="fragment">Node2D</li>
+              <li class="fragment">Control (-> UI Elemente)</li>
+            </ul>
+            <li class="fragment">
+              Da nur ein Script pro Node, meist Komposition statt Vererbung
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Beispiel Sprite2D</h4>
+          <img
+            src="assets/slide02/sprite2d_inspector.png"
+            alt=""
+            width="20%"
+            class="no-gap"
+          />
+          <p class="smol">
+            <code>Sprite2D&rarr;Node2D&rarr;CanvasItem&rarr;Node</code>
+          </p>
+        </section>
+        <section>
+          <h4>Was ist eine "Scene"?</h4>
+          <ul>
+            <li>Jede Teilbaum von Nodes ist auch eine Scene</li>
+            <li>
+              Im SceneTree kann man jederzeit "Save Branch as Scene" klicken
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Nodes mit Kollisionen</h2>
+        </section>
+        <section>
+          <h4>
+            <img
+              src="assets/godot-icons/StaticBody2D.svg"
+              class="icon no-gap"
+            />
+            StaticBody2D |
+            <img
+              src="assets/godot-icons/StaticBody3D.svg"
+              class="icon no-gap"
+            />
+            StaticBody3D
+          </h4>
+          <ul class="naked">
+            <li><span style="text-decoration: underline">Funktion:</span></li>
+            <li>Physics Body; Unbeweglich</li>
+            <li>
+              (Kann trotzdem bewegt werden, aber reagiert nicht auf Kollisionen)
+            </li>
+            <li>
+              <span style="text-decoration: underline">Anwendungen:</span>
+            </li>
+            <li>Wände, Feste Hindernisse, Weltengrenzen</li>
+          </ul>
+        </section>
+        <section>
+          <h4>
+            <img
+              src="assets/godot-icons/CharacterBody2D.svg"
+              class="icon no-gap"
+            />
+            CharacterBody2D |
+            <img
+              src="assets/godot-icons/CharacterBody3D.svg"
+              class="icon no-gap"
+            />
+            CharacterBody3D
+          </h4>
+          <ul class="naked">
+            <li><span style="text-decoration: underline">Funktion:</span></li>
+            <li>Physics Body; Nur "manuell" bewegt</li>
+            <li>Sprich: Muss durch eigenen Code bewegt werden</li>
+            <li>
+              <span style="text-decoration: underline">Anwendungen:</span>
+            </li>
+            <li>
+              Charactere oder Objekte die nicht durch äußere Einflüsse
+              beinflusst werden sollen
+            </li>
+            <li>zB. Pong Paddles, Tetris Blöcke, ...</li>
+          </ul>
+        </section>
+        <section>
+          <h4>
+            <img src="assets/godot-icons/RigidBody2D.svg" class="icon no-gap" />
+            RigidBody2D |
+            <img src="assets/godot-icons/RigidBody3D.svg" class="icon no-gap" />
+            RigidBody3D
+          </h4>
+          <p class="smol">
+            "Rigid" (Starr) im gegensatz zu "Soft" (Weich) bodies!
+          </p>
+          <ul class="naked">
+            <li><span style="text-decoration: underline">Funktion:</span></li>
+            <li>Physics Body; Volle Physics Simulation</li>
+            <li>
+              Wird nicht direkt durch code bewegt, aber kann mit Kräften
+              beeinflusst werden
+            </li>
+            <li>
+              <span style="text-decoration: underline">Anwendungen:</span>
+            </li>
+            <li>
+              "Normale" Physicsobjekte: Teile eines Kaputten Objektes, die
+              "weggeschubst" werden können sollen
+            </li>
+            <li>zB. Pong Paddles, Tetris Blöcke, ...</li>
+          </ul>
+        </section>
+        <section>
+          <h4>
+            <img src="assets/godot-icons/Area2D.svg" class="icon no-gap" />
+            Area2D |
+            <img src="assets/godot-icons/Area3D.svg" class="icon no-gap" />
+            Area3D
+          </h4>
+          <ul class="naked">
+            <li><span style="text-decoration: underline">Funktion:</span></li>
+            <li>Collision Body; "Nur" für Kollisionen, keine Physics</li>
+            <li>
+              erkennt wenn es in andere Körper rein bewegt wird, aber hält
+              nichts auf und ist quasi nur ein Sensor
+            </li>
+            <li>
+              <span style="text-decoration: underline">Anwendungen:</span>
+            </li>
+            <li>
+              Erkennung dass Physicsobjekte (oder andere Areas) in einem Bereich
+              (sprich Areal) ist
+            </li>
+            <li>
+              zB. Interagierbare Objekte für Charactere, Zonen die Einfluss
+              nehmen (wind, feuer, gift, ...), ...
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>
+            <img
+              src="assets/godot-icons/CollisionShape2D.svg"
+              class="icon no-gap"
+            />
+            CollisionShape2D |
+            <img
+              src="assets/godot-icons/CollisionShape3D.svg"
+              class="icon no-gap"
+            />
+            CollisionShape3D
+          </h4>
+          <ul class="naked">
+            <li><span style="text-decoration: underline">Funktion:</span></li>
+            <li>Definiert die Kollision der Physics Objekte</li>
+            <li>
+              <span style="text-decoration: underline">2D Shapes:</span>
+            </li>
+            <li>Circle, Square, Capsule, Worldboundary, Polygon, ...</li>
+            <li>
+              <span style="text-decoration: underline">3D Shapes:</span>
+            </li>
+            <li>Sphere, Box, Capsule, Worldboundary, Mesh(/Polygon), ...</li>
+          </ul>
+        </section>
+        <section>
+          <h4>... und noch viele andere!</h4>
+          <h4>
+            <a
+              href="https://docs.godotengine.org/en/stable/getting_started/step_by_step/nodes_and_scenes.html"
+              >Godot Docs: Nodes</a
+            >
+          </h4>
+        </section>
+        <section>
+          <h3>Signale</h3>
+          <ul>
+            <li class="fragment">Signale sind das Event-System von Godot</li>
+            <li class="fragment">Erlauben lose Kopplung zwischen Nodes</li>
+            <li class="fragment">
+              Node A <em>emittet</em> ein Signal → Node B
+              <em>reagiert</em> darauf
+            </li>
+            <li class="fragment">
+              Node A muss nichts von Node B wissen und stellt nur das Signal
+              bereit
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Beispiel: Button signal verbinden</h4>
+          <pre><code class="language-gdscript">
+func _ready():
+    $Button.pressed.connect(_on_button_pressed)
+
+func _on_button_pressed():
+    print("Button wurde gedrückt!")
+          </code></pre>
+        </section>
+        <section>
+          <h4>Im Editor</h4>
+          <img src="assets/slide02/signal_connect_ui.png" alt="">
+        </section>
+        <section>
+          <h4>Man kann einfach eigene Signale erstellen:</h4>
+          <pre><code class="language-gdscript">
+signal my_signal()
+signal damaged(amount: int)
+          </code></pre>
+        </section>
+        <section>
+          <h2>GDScript</h2>
+          <p>Konventionen, Funktionen und Tücken</p>
+        </section>
+        <section>
+          <h3>GDScript == Python??</h3>
+          <ul>
+            <li class="fragment">
+              GDScript nimmt starke Inspiration von Python
+            </li>
+            <li class="fragment">
+              Hat aber wichtige Unterschiede wie zB bei der Typisierung
+            </li>
+            <li class="fragment">
+              Python hat optionale Typisierung, aber ist nur ein Hinweis für
+              Linter
+            </li>
+            <li class="fragment">
+              GDScript hat "echte" aber optionale Typisierung
+            </li>
+            <li class="fragment">
+              Es ist Empfehlenswert so viel zu Typisieren wie möglich zu machen
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Typing</h3>
+          <pre><code class="language-gdscript" data-line-numbers="2-8|10-14">
+func _ready():
+	var test1 = "cool text"
+	test1 = 5
+	print(test1) # Output "5"
+	var test2 : String = "cool text"
+	test2 = 5 # Fehler und bricht hier ab
+	print(test2)
+
+func myNum():
+	return 5 # Geht, da keine Typisierung
+
+func myName() -> String:
+	return 5 # Fehler und bricht hier ab
+          </code></pre>
+        </section>
+        <section>
+          <p class="smol">Naming Conventions <a href="https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html#naming-conventions">Godot Style Guide</a></p>
+          <table>
+            <thead>
+              <tr>
+                <td><span style="font-weight: bold">Type</span></td>
+                <td><span style="font-weight: bold">Convention</span></td>
+                <td><span style="font-weight: bold">Example</span></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="fragment">
+                <td>File names</td>
+                <td>snake_case</td>
+                <td>yaml_parser.gd</td>
+              </tr>
+              <tr class="fragment">
+                <td>Class names</td>
+                <td>PascalCase</td>
+                <td>class_name YAMLParser</td>
+              </tr>
+              <tr class="fragment">
+                <td>Node names</td>
+                <td>PascalCase</td>
+                <td>Camera3D, Player</td>
+              </tr>
+              <tr class="fragment">
+                <td>Functions</td>
+                <td>snake_case</td>
+                <td>func load_level():</td>
+              </tr>
+              <tr class="fragment">
+                <td>Variables</td>
+                <td>snake_case</td>
+                <td>var particle_effect</td>
+              </tr>
+              <tr class="fragment">
+                <td>Signals</td>
+                <td>snake_case</td>
+                <td>signal door_opened</td>
+              </tr>
+              <tr class="fragment">
+                <td>Constants</td>
+                <td>CONSTANT_CASE</td>
+                <td>const MAX_SPEED = 200</td>
+              </tr>
+              <tr class="fragment">
+                <td>Enum names</td>
+                <td>PascalCase</td>
+                <td>enum Element</td>
+              </tr>
+              <tr class="fragment">
+                <td>Enum members</td>
+                <td>CONSTANT_CASE</td>
+                <td>{EARTH, WATER, AIR, FIRE}</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="max">
+          <p class="smol">
+            Reihenfolge der Sprachelemente einer GDScript Datei
+          </p>
+          <pre><code class="noHighlight">01. @tool, @icon, @static_unload
+02. class_name
+03. extends
+04. ## doc comment
+
+05. signals
+06. enums
+07. constants
+08. static variables
+09. @export variables
+10. remaining regular variables
+11. @onready variables
+
+12. _static_init()
+13. remaining static methods
+14. overridden built-in virtual methods:
+	1. _init()
+	2. _enter_tree()
+	3. _ready()
+	4. _process()
+	5. _physics_process()
+	6. remaining virtual methods
+15. overridden custom methods
+16. remaining methods
+17. subclasses</code></pre>
+        </section>
+        <section>
+          <h3>Game Loops</h3>
+          <ul>
+            <li class="fragment">
+              Grundlage der meisten Game Engines ist eine Gameloop
+            </li>
+            <li class="fragment">Oft aufgeteilt zwischen:</li>
+            <ul>
+              <li class="fragment"><code>Per-Frame-Code</code></li>
+              <li class="fragment"><code>Per-Phsyics-Step-Code</code></li>
+            </ul>
+            <li class="fragment">In Godot:</li>
+            <ul>
+              <li class="fragment">
+                <code>_process(delta)</code>: wird jedes Frame aufgerufen
+              </li>
+              <li class="fragment">
+                <code>_physics_process(delta)</code>: wird bei jedem Physik
+                Schritt aufgerufen
+              </li>
+            </ul>
+            <li class="fragment">
+              <code>delta</code> ist hierbei jeweils die Zeit zum letzten Aufruf
+            </li>
+            <li class="fragment">
+              Bei physics üblicherweise jedes mal gleich, da Konstante
+              Zeitabstände genutzt werden
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Nutzen der zwei Loops</h3>
+          <ul>
+            <li class="fragment"><code>_physics_process</code></li>
+            <ul>
+              <li class="fragment">
+                Mehrfach in einem Physik Schritt Kollisionsobjekte zu bewegen
+                bringt nichts &rarr; wird nur im Schritt abgeprüft
+              </li>
+              <li class="fragment">
+                Bei unterschiedlichen Rechnerleistungen verändert sich nicht die
+                Ausführhäufigkeit
+              </li>
+            </ul>
+            <li class="fragment"><code>_process</code></li>
+            <ul>
+              <li class="fragment">
+                Physikschritt sind oft einiges niedriger als FPS
+              </li>
+              <li class="fragment">
+                Physikunabhänige visuelle Sachen wie Animationen sollten jedes
+                Frame aktualisiert werden
+              </li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h4>Warum <code>delta</code>?</h4>
+          <video
+            data-autoplay
+            loop
+            width="80%"
+            src="assets/slide02/broken_timers_cpu.mp4"
+          ></video>
+          <p class="smol">
+            "Why timers in Sierra games are so broken" - Space Quest Historian
+          </p>
+          <p class="smol">
+            <a href="https://youtu.be/Ig8cX6FTGq8"
+              >https://youtu.be/Ig8cX6FTGq8</a
+            >
+          </p>
+        </section>
+        <section>
+          <h4>Godot loop vergleich</h4>
+          <pre>
+            <code class="language-gdscript">func _process(delta):
+	position.x += 1</code>
+          </pre>
+          <pre>
+            <code class="language-gdscript">func _physics_process(delta):
+	position.x += 1</code>
+          </pre>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide02/godot_no_delta.mp4"
+            width="80%"
+          ></video>
+        </section>
+        <section>
+          <h4>Godot loop mit <code>delta</code></h4>
+          <pre>
+            <code class="language-gdscript">func _process(delta):
+	position.x += 60 * delta</code>
+          </pre>
+          <pre>
+            <code class="language-gdscript">func _physics_process(delta):
+	position.x += 60 * delta</code>
+          </pre>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide02/godot_delta.mp4"
+            width="80%"
+          ></video>
+        </section>
+        <section>
+          <h4>Rechnung <code>* delta</code></h4>
+          <ul>
+            <li class="fragment">
+              Da <code>delta</code> die Zeit seit letzten Durchlauf ist
+            </li>
+            <li class="fragment">
+              <code>* delta</code> ist in <code>_physics_process</code> ca
+              <code>* 0.016</code>
+            </li>
+            <li class="fragment">Das sind 60 Schritte / 1 Sekunde</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Start Funktionen</h4>
+          <ul>
+            <li class="fragment">
+              <code>_init</code>: Konstruktor der Node/Klasse (einmalig)
+            </li>
+            <li class="fragment">
+              <code>_enter_tree</code>: Wenn die Node in den Scene Tree
+              eingehangen wird
+            </li>
+            <li class="fragment">
+              <code>_ready</code>: Wenn alle Child Nodes fertig initialisiert
+              wurden (einmalig)
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4><code>@tool</code></h4>
+          <p>
+            Toolscripts laufen im Editor, bentutzt wenn man Hilfen baut mit
+            denen man den Entwicklungsprozess verbessert
+          </p>
+          <pre>
+            <code class="language-gdscript">
+@tool
+func _process(delta):
+	if Engine.is_editor_hint():
+		rotation += PI * delta # rotiert im Editor im Uhrzeigersinn
+	else:
+		rotation -= PI * delta # rotiert im Spiel gegen den Uhrzeigersinn
+            </code>
+          </pre>
+          <p>
+            Vorsicht: wenn man mit tool scripts den SceneTree verändert und das
+            gespeichert wird ist das permanent
+          </p>
+        </section>
+        <section>
+          <h4><code>@export [var]</code></h4>
+          <p>Exposed die Variable in den Inspector</p>
+          <p>Hilfreich bei Dingen die man pro Node im Editor einstellen will</p>
+          <p>Sind weiterhin normale Variablen</p>
+        </section>
+        <section>
+          <h4><code>@onready [var]</code></h4>
+          <p>
+            Direkt vor <code>_ready</code> wird etwas gemacht (idR zuweisungen)
+          </p>
+          <pre>
+          <code class="language-gdscript">
+@onready var parent = get_parent()
+var first_child
+
+func _ready():
+  first_child = get_child # gleicher effekt wie ein onready auf first_child
+          </code>
+        </pre>
+          <p>Hilft primär für kompakteren Code</p>
         </section>
       </div>
     </div>
