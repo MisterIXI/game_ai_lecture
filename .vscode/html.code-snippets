@@ -15,7 +15,7 @@
     "prefix": "gdcode",
     "body": [
         "<pre>",
-        "\t<code class=\"langauge-gdscript\">",
+        "\t<code class=\"language-gdscript\">",
         "\t\t${1}",
         "\t</code>",
         "</pre>"
