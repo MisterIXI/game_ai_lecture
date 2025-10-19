@@ -87,4 +87,7 @@ max-height: 70vh;
   /* background-color: aqua; */
 }
 
-.print-pdf pre {}
+/* Expand code in PDF mode for copying */
+.print-pdf pre code {
+  max-height: none !important;
+}

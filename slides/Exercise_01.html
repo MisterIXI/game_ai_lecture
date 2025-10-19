@@ -344,7 +344,7 @@ extends CharacterBody2D
           </section>
           <section data-auto-animate>
             <pre data-id="code-animation">
-    <code class="language-gdscript" data-trim data-line-numbers="|3-5|6-9|10-13|15-23|24-27">class_name Paddle
+    <code class="language-gdscript" data-trim data-line-numbers="3-5|6-9|10-13|15-23|24-27|">class_name Paddle
 extends CharacterBody2D
 #-- Die Geschwindigkeit des Paddles. Kann man dank @export pro Instanz einstellen.
 ## speed of paddle movement
@@ -562,7 +562,7 @@ func _physics_process(_delta):
           </section>
           <section>
             <pre>
-              <code class="language-gdscript" data-line-numbers="|1-10|12-25|27-38|39-50">class_name PongBall
+              <code class="language-gdscript" data-line-numbers="1-10|12-25|27-38|39-50|">class_name PongBall
 extends CharacterBody2D
 const BOUNCE_ANGLE: float = 45
 
@@ -651,7 +651,7 @@ func _handle_paddle_collision(collision: KinematicCollision2D) -> void:
           </section>
           <section>
             <pre>
-              <code class="language-gdscript" data-line-numbers="|1-14|16-35|37-53">class_name PongGame
+              <code class="language-gdscript" data-line-numbers="1-14|16-35|37-53|">class_name PongGame
 extends Node2D
 
 @export var ball: PongBall
@@ -756,7 +756,7 @@ func reset_ball(towards_left: bool = true) -> void:
           </section>
           <section>
             <pre>
-              <code class="language-gdscript" data-line-numbers="|1-12|14-19|21-24">class_name SimpleAI
+              <code class="language-gdscript" data-line-numbers="1-12|14-19|21-24|">class_name SimpleAI
 extends Node
 
 @export var ball: PongBall
@@ -842,7 +842,7 @@ func _chase_ball_no_vibration(delta: float) -> void:
           </section>
           <section class="big">
             <pre>
-              <code class="language-gdscript"  data-line-numbers="|1-12|14-19|20-29|30-37|39-51|53-64|65-79|80-101|103-115">class_name PredictiveAI
+              <code class="language-gdscript"  data-line-numbers="1-12|14-19|20-29|30-37|39-51|53-64|65-79|80-101|103-115|">class_name PredictiveAI
 extends Node2D
 
 @export var ball: PongBall
