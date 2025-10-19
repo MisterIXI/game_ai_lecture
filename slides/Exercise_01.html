@@ -864,13 +864,13 @@ func _on_ball_collision(collision: KinematicCollision2D) -> void:
 #-- Wenn der Ball das andere Paddle trifft, rechne einen neue Prediction aus
 	# check if the ball just collided with the other paddle
 	if collider.is_in_group("paddles") and collider != paddle:
-    raycast_path.clear()
-    # raycast and bounce until hit a detection layer
-    var curr_pos: Vector2 = collision.get_position()
-    raycast_path.append(curr_pos)
-    var direction: Vector2 = ball.velocity.normalized()
-    calc_new_target_y(curr_pos, direction, collider)
-    queue_redraw()
+		raycast_path.clear()
+		# raycast and bounce until hit a detection layer
+		var curr_pos: Vector2 = collision.get_position()
+		raycast_path.append(curr_pos)
+		var direction: Vector2 = ball.velocity.normalized()
+		calc_new_target_y(curr_pos, direction, collider)
+		queue_redraw()
 #-- Wenn der Ball das eigene Paddle trifft, lösche die Visualisierung
 #-- und zurück auf neutrale Position
 	elif collider == paddle:
