@@ -2,6 +2,18 @@
   list-style-type: none;
 }
 
+.reveal .grid2{
+  display: grid;
+  grid-template-columns: repeat(2,50%);
+  grid-template-rows: repeat(1, auto);
+  justify-content: center;
+  gap: 0px;
+}
+
+.grid2>ul{
+  width: 100%;
+}
+
 .grid4 {
   display: grid;
   grid-template-columns: repeat(2, 45%);
