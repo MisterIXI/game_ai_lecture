@@ -55,6 +55,11 @@
   height: 60vh;
 }
 
+.reveal .big .gd_slide{
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
 .reveal section.big pre {
   margin-left: 0;
   margin-right: 0;
@@ -78,7 +83,6 @@
 .reveal section.max code {
 max-height: 70vh;
 }
-
 
 .reveal p.smol {
   margin: 0;
