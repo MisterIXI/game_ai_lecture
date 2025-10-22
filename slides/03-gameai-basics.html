@@ -38,9 +38,9 @@
         <section>
           <h4>Vorab:</h4>
           <ul>
-            <li>Abgabe GDD im OLAT</li>
-            <li>Vorlesung ab jetzt immer im 1-312</li>
-            <li>Potentiell anderer Rechnerraum für Übung</li>
+            <li class="fragment">Abgabe GDD im OLAT</li>
+            <li class="fragment">Vorlesung ab jetzt immer im 1-312</li>
+            <li class="fragment">Potentiell anderer Rechnerraum für Übung</li>
           </ul>
         </section>
         <section>
@@ -93,18 +93,23 @@
         <section>
           <h4>Finite State Machine (FSM)</h4>
           <ul>
-            <li>Hat definierte Verhalten für jeden "State"</li>
-            <li>
+            <li class="fragment">Hat definierte Verhalten für jeden "State"</li>
+            <li class="fragment">
               Jeder <code>State</code> hat definierte Verhalten hintendran
             </li>
-            <li>
+            <li class="fragment">
               Zwischen den States gibt es mögliche <code>Transitions</code>
             </li>
           </ul>
         </section>
         <section>
-          <h4>Beispiel Simple Chaser</h4>
-          <p>TODO: Video hier</p>
+          <h4>Beispiel Simple Chaser FSM</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide03/fsm_demo.mp4"
+            width="80%"
+          ></video>
         </section>
         <section class="big">
           <pre>
@@ -148,6 +153,423 @@ func _on_vision_cone_body_exited(_body: Node2D) -> void:
 	change_state(return_home, "Returning Home")
             </code>
           </pre>
+        </section>
+        <section>
+          <h4>Behaviour Tree</h4>
+          <ul>
+            <li class="fragment">
+              Ähnlichkeiten zu Finite State Machines (FSM), aber flexibler und
+              hierarchischer
+            </li>
+            <li class="fragment">
+              Sehr modular, dadurch besser wartbar bei vielen Zuständen,
+              Übergängen und Bedingungen
+            </li>
+            <li class="fragment">
+              Baumstruktur: Der Baum wird von der Wurzel aus durchlaufen, um zu
+              bestimmen, welche Blätter (Aktionen) ausgeführt werden
+            </li>
+            <li class="fragment">
+              Jedes Blatt führt typischerweise nur eine Aktion oder Abfrage aus
+            </li>
+            <li class="fragment">
+              Jeder Knoten gibt <code>SUCCESS</code>, <code>FAILURE</code> oder
+              <code>RUNNING</code> zurück
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Beispiel mit dem Beehave Godot Plugin</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide03/beetree_demo.mp4"
+            width="80%"
+          ></video>
+        </section>
+        <section>
+          <h4>Utility AI</h4>
+          <ul>
+            <li class="fragment">
+              Entscheidung über Nutzenwerte statt fester Regeln
+            </li>
+            <li class="fragment">
+              Aktionen werden numerisch bewertet &rarr; Score
+            </li>
+            <li class="fragment">
+              Höchster Score &rarr; Aktion wird ausgeführt
+            </li>
+            <li class="fragment">Sehr flexibel und situationsabhängig</li>
+            <li class="fragment">
+              Benötigt Feintuning der Gewichtungen, kann schwierig sein
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Infinite Axis Utility AI</h4>
+          <ul>
+            <li class="fragment">
+              Erweiterung von Utility AI mit mehreren, unabhängigen Achsen
+            </li>
+            <li class="fragment">
+              Jede Achse bewertet einen Aspekt des Verhaltens (z. B. Angriff,
+              Flucht, Heilung)
+            </li>
+            <li class="fragment">
+              Kombiniert Achsen zu komplexem, kontinuierlichem Verhalten
+            </li>
+            <li class="fragment">
+              Erzeugt sehr natürliche Übergänge zwischen Aktionen
+            </li>
+            <li class="fragment">Hoher Rechen- und Balancing-Aufwand</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Goal Oriented Action Planning (GOAP)</h4>
+          <p>(Aus der Robotik!)</p>
+          <ul>
+            <li class="fragment">
+              Planungsbasierte AI: wählt Aktionen basierend auf Zielen
+            </li>
+            <li class="fragment">Aktionen haben Vorbedingungen und Effekte</li>
+            <li class="fragment">
+              AI erstellt einen Plan, um ein Ziel zu erreichen
+            </li>
+            <li class="fragment">
+              Sehr flexibel, reagiert dynamisch auf Umweltänderungen
+            </li>
+            <li class="fragment">
+              Kann komplexere, langfristige Strategien generieren
+            </li>
+            <li class="fragment">
+              ABER: muss bei Änderungen oft den ganzen Plan neu errechnen
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Beispiel Action: Open-Door</h4>
+          <ul>
+            <li class="fragment"><code>Objects</code>:</li>
+            <ul>
+              <li class="fragment">Door1</li>
+              <li class="fragment">RoomA</li>
+              <li class="fragment">RoomB</li>
+            </ul>
+            <li class="fragment"><code>Preconditions</code>:</li>
+            <ul>
+              <li class="fragment">(closed Door1)</li>
+              <li class="fragment">(in RoomA)</li>
+              <li class="fragment">(doorway Door1, RoomA, RoomB)</li>
+            </ul>
+            <li class="fragment"><code>Effect</code>:</li>
+            <ul>
+              <li class="fragment">(open Door1)</li>
+              <li class="fragment">(not (closed Door1))</li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h4>Beispiel Plan:</h4>
+          <ul>
+            <li class="fragment">Move to Room 1</li>
+            <li class="fragment">Move To Door1</li>
+            <li class="fragment">Open Door1</li>
+            <li class="fragment">Move to Room 2</li>
+            <li class="fragment">Aim at Player</li>
+            <li class="fragment">Attack Player</li>
+          </ul>
+        </section>
+        <section>
+          <h4>HTN Planning</h4>
+          <ul>
+            <li class="fragment">Auch ein Planning ansatz</li>
+            <li class="fragment">Anderer Planungsalgorithmus</li>
+            <li class="fragment">
+              Statt flacher Aktionsliste hat HTN eine hierarchische Struktur
+            </li>
+            <li class="fragment">
+              Vorteil: wiederverwendbare Pläne, gut für längerfristige/komplexe
+              Ziele
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Machine Learning</h4>
+          <ul>
+            <li class="fragment">Zwei Hauptanwendungen in Spielen:</li>
+            <ul>
+              <li class="fragment">Vortrainiert für starkes/gutes Verhalten</li>
+              <li class="fragment">"Live" im Spiel trainieren um eine Lernende KI zu haben</li>
+            </ul>
+            <li class="fragment">
+              Öfters angewandt für Forschung (OpenAI Five, DeepmindSC2, ...)
+            </li>
+            <li class="fragment">Fast immer Reinforcement Learning</li>
+            <li class="fragment">(dadurch oft Proximal Policy Optimization (PPO))</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Reinforcement Learning - Zusammengefasst</h4>
+          <ul>
+            <li class="fragment">Ein Agent probiert erstmal zufällig aktionen aus</li>
+            <li class="fragment">Dabei wird er belohnt (oder bestraft)</li>
+            <li class="fragment">
+              Schritt für Schritt lernt er dazu: Er passt sein Neuronales Netz
+              an dass er die Aktionen ausführt die zur höchsten künftigen
+              Belohnung führen
+            </li>
+            <li class="fragment">Oft werden hier parallel viele gleichzeitig trainiert</li>
+            <li class="fragment">
+              Braucht viel Rechenzeit da sehr viel unbeholfen ausprobiert wird
+            </li>
+            <li class="fragment">Lernt dafür organisch eigene Verhalten</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Menschlicher Spieler bei "Leberkäß"</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide03/leberkaes_playthrough.mp4"
+            width="80%"
+          ></video>
+        </section>
+        <section>
+          <h4>KI in Trainingsbox - untrainiert</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide03/ppo_leberkaes_untrained.mp4"
+            width="80%"
+          ></video>
+        </section>
+        <section>
+          <h4>KI in Trainingsbox - trainiert</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide03/ppo_leberkaes_trained.mp4"
+            width="80%"
+          ></video>
+        </section>
+        <section>
+          <h4>Trainingsgraph</h4>
+          <img
+            src="assets/slide03/ppo_rew_mean.png"
+            alt=""
+            width="80%"
+            class="no-gap"
+          />
+          <img
+            src="assets/slide03/ppo_succ_rate.png"
+            alt=""
+            width="80%"
+            class="no-gap"
+          />
+        </section>
+        <section>
+          <h4>PPO Library: <code>Godot RL Agents</code></h4>
+          <ul>
+            <li class="fragment">Für die Demo verwendete Library:</li>
+            <ul>
+              <li class="fragment">
+                <a href="https://github.com/edbeeching/godot_rl_agents"
+                  >Godot RL Agents</a
+                >
+                von EdBeeching
+              </li>
+              <li class="fragment">
+                Ursprünglich ein
+                <a href="https://arxiv.org/abs/2112.03636">Workshop Paper</a>
+              </li>
+              <li class="fragment">Edbeeching arbeitet bei Huggingface</li>
+              <li class="fragment">
+                Library nutzt http socket um mit python zu kommunizieren wo das
+                training und inference stattfindet
+              </li>
+              <li class="fragment">
+                Trainierte KIs können in Godot einfach mit C# via einem ONNX
+                NuGet Package ausgeführt werden
+              </li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h2>Typische KI Komponenten</h2>
+        </section>
+        <section>
+          <h4>Sensing</h4>
+          <ul>
+            <li class="fragment">Viele Möglichkeiten "Sinne" abzubilden</li>
+            <li class="fragment">
+              Oft werden direkt positionen ausgelesen und distanzen so berechnet
+            </li>
+            <li class="fragment">
+              Gut funktionieren <code>Area2D</code> bzw <code>Area3D</code> um
+              ein Sichtfeld zu simulieren
+            </li>
+            <li class="fragment">
+              (&rarr; bei <code>body_entered</code> wird sich das gemerkt und
+              bei <code>body_exited</code> wieder "vergessen")
+            </li>
+            <li class="fragment">
+              Geräusche werden oft auch nur via simple distanz zur
+              Geräuschquelle bestimmt
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Raycasts</h4>
+          <ul>
+            <li class="fragment">Ein <code>Raycast</code> ist wie ein Laserpointer</li>
+            <ul>
+              <li class="fragment">"unendlich" dünn und geht von Punkt A zu Punkt B</li>
+              <li class="fragment">
+                Kann entweder kollidieren und stoppen, oder bis zur
+                maximaldistanz schießen
+              </li>
+            </ul>
+            <li class="fragment">Sehr grundlegendes Tool in den meisten Physicslibraries</li>
+            <li class="fragment">
+              Kann bspw. dazu eingesetzt werden ob Sichtlinie zum Spieler
+              besteht (Raycast zur Spielerposition, trifft das zuerst die Wand
+              oder den Spieler?)
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Shapecasts</h4>
+          <ul>
+            <li class="fragment">
+              Ähnlich zu Raycasts, aber stattdessen wird eine Shape den Raycast
+              entlang "geschoben"
+            </li>
+            <li class="fragment">
+              Shape wird idR jede X Distanz geprüft um möglichst viel abzudecken
+            </li>
+            <li class="fragment">
+              Seltene Prüfung, da sehr rechenintensiv und meistens "gut genug"
+            </li>
+          </ul>
+          <img
+            src="assets/slide03/ray_and_shapecast.png"
+            alt=""
+            width="70%"
+            class="no-gap"
+            style="padding-top: 10px"
+          />
+          <p class="smol">Oben Raycast, unten Shapecast mit Circleshape</p>
+        </section>
+        <section>
+          <h2>Pathfinding</h2>
+        </section>
+        <section>
+          <h4>Pathfinding</h4>
+          <ul>
+            <li class="fragment">Meistens A* (Astar)</li>
+            <li class="fragment">
+              Effizienz sehr wichtig, da oft neue Pfade berechnet werden müssen
+            </li>
+            <li class="fragment">
+              Die ganzen klassischen Pfadfinde algorithmen können hier angewandt
+              werden
+            </li>
+            <li class="fragment">
+              Gute visualierung:
+              <a href="https://qiao.github.io/PathFinding.js/visual/"
+                >https://qiao.github.io/PathFinding.js/visual/</a
+              >
+            </li>
+            <li class="fragment">
+              Exzellentes Youtube Tutorial von Sebastian Lague: <br /><a
+                href="https://youtu.be/-L-WgKMFuhE"
+                >https://youtu.be/-L-WgKMFuhE</a
+              >
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Dijkstra (Breadth-first-search)</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide03/dijkstra_demo.mp4"
+            width="80%"
+          ></video>
+        </section>
+        <section>
+          <h4>A* (Dijkstra mit Heuristik)</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide03/astar_demo.mp4"
+            width="80%"
+          ></video>
+        </section>
+        <section>
+          <h4 class="no-gap">A* im Details</h4>
+          <table>
+            <tr>
+              <td width="45%">
+                <img
+                  src="assets/slide03/astar_closeup.png"
+                  alt=""
+                  width="100%"
+                />
+                <ul></ul>
+              </td>
+              <td style="vertical-align: top">
+                <ul>
+                  <li class="fragment">
+                    <strong>f(n) = g(n) + h(n)</strong> → geschätzte
+                    Gesamtkosten
+                  </li>
+                  <li class="fragment"><strong>g(n)</strong> → Kosten vom Startknoten</li>
+                  <li class="fragment">
+                    <strong>h(n)</strong> → Heuristik: geschätzte Kosten zum
+                    Ziel
+                  </li>
+                  <li class="fragment"><strong>Offene Liste</strong> → zu bewertende Knoten</li>
+                  <li class="fragment">
+                    <strong>Geschlossene Liste</strong> → bereits bewertete
+                    Knoten
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+          <ul class="no-gap">
+            <li class="fragment">
+              <strong>Heuristik-Regeln:</strong>
+              <ul>
+                <li class="fragment">
+                  Muss <strong>zulässig</strong> sein (überschätzt niemals)
+                </li>
+                <li class="fragment">
+                  Oft <strong>Manhattan</strong> für Gitter,
+                  <strong>euklidisch</strong> für kontinuierlichen Raum
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Obstacle Avoidance: Artificial Potential Field</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide03/apf_viz.mp4"
+            width="80%"
+          ></video>
+        </section>
+        <section>
+          <h4>Godot <code>NavigationAgent2D</code></h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide03/navagent_demo.mp4"
+            width="80%"
+          ></video>
         </section>
       </div>
     </div>
