@@ -107,3 +107,7 @@ max-height: 70vh;
 .print-pdf pre code {
   max-height: none !important;
 }
+
+.reveal .normal-case{
+  text-transform: none;
+}

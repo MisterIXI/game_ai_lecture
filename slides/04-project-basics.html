@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>04 Project Basics</title>
+
+    <link rel="stylesheet" href="../dist/reset.css" />
+    <link rel="stylesheet" href="../dist/reveal.css" />
+    <!-- <link rel="stylesheet" href="dist/theme/white.css"> -->
+    <link rel="stylesheet" href="../dist/theme/beige.css" />
+    <link rel="stylesheet" href="assets/custom.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <!-- <link rel="stylesheet" href="//unpkg.com/@catppuccin/highlightjs@1.0.1/css/catppuccin-latte.css"> -->
+    <!-- <link rel="stylesheet" href="//unpkg.com/@catppuccin/highlightjs@1.0.1/css/catppuccin-macchiato.css"> -->
+    <link
+      rel="stylesheet"
+      href="../plugin/highlight/catppuccin-macchiato.css"
+    />
+    <!-- <link rel="stylesheet" href="plugin/highlight/monokai.css"> -->
+    <!-- <link rel="stylesheet" href="plugin/highlight/code_highlight.css"> -->
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>GAKI</h1>
+          <h2>04 Project Basics</h2>
+          <p>Yannik Brändle - WS25/26</p>
+          <p>TH Bingen</p>
+        </section>
+        <section
+          data-background-image="assets/slide04/zwischen_null_und_eins_bild_adobe_stock.jpg"
+          style="color: antiquewhite"
+        >
+          <div
+            style="
+              background-color: RGBA(100, 100, 100, 0.85);
+              border-radius: 30px;
+              padding: 20px;
+            "
+          >
+            <h4
+              style="color: antiquewhite; font-weight: bold"
+              class="normal-case"
+            >
+              Vorab: TH Event "Zwischen NULL und EINS"
+            </h4>
+            <h5
+              style="color: antiquewhite; font-weight: bold"
+              class="normal-case"
+            >
+              KI-Sprachmodelle als Lösung für ALLE(S)
+            </h5>
+            <p class="no-gap">
+              Donnerstag
+              <span style="font-weight: bolder">13.11.2025 I 15:00 Uhr</span>
+            </p>
+            <p class="no-gap">Technische Hochschule Bingen, Raum 5-205</p>
+            <ul>
+              <li class="fragment">
+                Impuls-Vortrag zum Thema Technische-ethische Dimensionen von
+                KI-Sprachmodellen und ihre Auswirkungen auf Diversity
+              </li>
+              <li class="fragment">
+                Diskussion mit Hochschulangehörige aus verschiedenen Bereichen
+                und Perspektiven. Durch eine Diskussion soll Raum für den
+                Austausch geschaffen werden und Lösungsansätze für die
+                Herausforderungen, die durch KI-Sprachmodelle entstehen,
+                angedacht werden.
+              </li>
+            </ul>
+            <p class="smol">
+              <a
+                style="color: antiquewhite"
+                href="https://www.th-bingen.de/campus/veranstaltung/zwischen-null-und-eins-ki-sprachmodelle-als-loesung-fuer-alles"
+                >https://www.th-bingen.de/campus/veranstaltung/zwischen-null-und-eins-ki-sprachmodelle-als-loesung-fuer-alles</a
+              >
+            </p>
+          </div>
+        </section>
+        <section>
+          <h4>Heutige Themen</h4>
+          <div class="grid2">
+            <ul>
+              <li class="fragment">Gamedev Projekt Grundlagen</li>
+              <ul>
+                <li class="fragment">Source Control</li>
+                <li class="fragment">Task Tracking</li>
+                <li class="fragment">Typische Tücken</li>
+              </ul>
+            </ul>
+            <ul>
+              <li class="fragment">Pathfinding Vertiefung</li>
+              <ul>
+                <li class="fragment">Dijkstra</li>
+                <li class="fragment">A*</li>
+                <li class="fragment">Grid vs Graph</li>
+                <li class="fragment">Godot Navagent</li>
+              </ul>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <h4>Umfrage: Erfahrung mit Source Control</h4>
+          <p>Mitmachen via slido.com mit #2152374</p>
+          <p>
+            Oder via Link:
+            <a href="https://app.sli.do/event/jsTRvdn7ggvL14xFxuhNpb"
+              >https://app.sli.do/event/jsTRvdn7ggvL14xFxuhNpb</a
+            >
+          </p>
+          <img
+            src="assets/slide04/qr_code_git_poll.png"
+            alt=""
+            width="35%"
+            class="pixelated"
+          />
+          <!-- https://admin.sli.do/event/jsTRvdn7ggvL14xFxuhNpb/polls -->
+        </section>
+        <section>
+          <h4>Was ist "Source Control" und "Git"?</h4>
+          <ul>
+            <li class="fragment">Git ist eine der bekanntesten Source-Control Systeme</li>
+            <li class="fragment">
+              Man kann sehr gut Schritt für Schritt veränderungen von Source
+              code tracken
+            </li>
+            <li class="fragment">Gemacht für text basierte Dateiformate</li>
+            <li class="fragment">
+              "Binary" Dateien können auch getracked werden, aber schwieriger
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h4>Source Control Funktionsweise</h4>
+          <ul>
+            <li class="fragment">
+              Jede Veränderung (auch Erstellung) einer Datei wird "committed"
+            </li>
+            <li class="fragment">
+              Dabei wird die Verändung in einem <code>commit</code> gespeichert
+            </li>
+            <li class="fragment">
+              Diese können dann in der Regel automatisch vereint
+              (<code>merged</code>) werden
+            </li>
+            <li class="fragment">Man kann sich auch die differenzen anzeigen lassen</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Beispiel Git Diff in vscode</h4>
+          <img src="assets/slide04/git_diff_example.png" alt="" width="100%" />
+        </section>
+        <section>
+          <h4>Git branches</h4>
+          <div class="grid2" style="align-items: center">
+            <img
+              src="assets/slide04/git_branch_example_viz.png"
+              alt=""
+              width="80%"
+            />
+            <ul>
+              <li class="fragment">Gut zum Testen</li>
+              <li class="fragment">Einfacheres Parallel arbeiten (weniger merge konflikte)</li>
+              <li class="fragment">
+                Man kann einfacher den Stand eines Teammitglieds ansehen/testen
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <h4>
+            Gute Lernressource:
+            <a href="https://learngitbranching.js.org/"
+              >https://learngitbranching.js.org/</a
+            >
+          </h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide04/learn_git_branching_demo.mp4"
+            width="80%"
+          ></video>
+        </section>
+        <section>
+          <h4>Alternativen:</h4>
+          <ul>
+            <li class="fragment">Git ist sehr weit verbreitet, vor allem für Sourcecode</li>
+            <li class="fragment">
+              Bei Spielen gibt es oft viele "Assets", welche idR Binaries sind
+            </li>
+            <li class="fragment">Bei Datei größen > 50MiB warnt GitHub beim upload</li>
+            <li class="fragment">> 100MiB große Dateien werden komplett geblockt</li>
+            <li class="fragment">
+              Bei kleinen Spielen mit Assets <= 30MiB kein Problem normal Git zu
+              nutzen
+            </li>
+            <li class="fragment">
+              Git LFS für größere Dateien (Achtung: Bei GitHub nicht kostenlos)
+            </li>
+            <li class="fragment">Sonst auch Gamedev Industriestandard: Perforce statt Git</li>
+          </ul>
+        </section>
+        <section>
+          <h4>Task Tracking</h4>
+          <ul>
+            <li class="fragment">Oft nimmt man "Kanban Boards"</li>
+            <li class="fragment">
+              Unterteilt in <code>Backlog</code>, <code>In Progress</code>,
+              (<code>Review</code>) <code>Done</code>
+            </li>
+            <li class="fragment">
+              Kann man beliebig Anpassen und "Zweckentfremden"
+            </li>
+          </ul>
+          <div class="fragment">
+            <img
+              src="assets/slide04/kanban_wikipedia.png"
+              alt=""
+              width="65%"
+              class="no-gap"
+            />
+            <p class="smol no-gap">
+              Source: Wikipedia Kanban &rarr;
+              <a
+                href="https://en.wikipedia.org/wiki/Kanban_board#/media/File:Abstract_Kanban_Board.svg"
+                >https://en.wikipedia.org/wiki/Kanban_board#/media/File:Abstract_Kanban_Board.svg</a
+              >
+            </p>
+          </div>
+        </section>
+        <section>
+          <h4>Echtwelt Beispiel aus einem Gamejam (Trello)</h4>
+          <img src="assets/slide04/trello_example.png" alt="" />
+          <p>Hilft auch wenn es nicht perfekt befolgt wird!</p>
+        </section>
+        <section>
+          <section>
+            <h4>Typische Tücken Bei Gamedev</h4>
+            <ul>
+              <li class="fragment">Gleichzeitiges Arbeiten an Szenen</li>
+              <ul>
+                <li class="fragment">
+                  Godot's Szenenformat <code>.tscn</code> steht für "TextScene"
+                </li>
+                <li class="fragment">
+                  Kann dadurch besser durch Version Control Verwaltet werden als
+                  die Szenen der meisten Engines
+                </li>
+                <li class="fragment">
+                  Trotzdem führt paralleles Arbeiten an einer Szene oft zu Merge
+                  Konflikten
+                </li>
+                <li class="fragment">
+                  &rarr; Besser Komponenten in eigene Szenen auslagern und
+                  absprechen wer woran arbeitet
+                </li>
+                <li class="fragment">
+                  (Vorteil bei Perforce: "Exclusive Lock" bei Dateien um
+                  alleiniges Arbeiten sicherzustellen)
+                </li>
+              </ul>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <li class="fragment">Scope Creep</li>
+              <ul>
+                <li class="fragment">Gamedev tendiert sehr schnell und oft zu Scope Creep</li>
+                <li class="fragment">
+                  Immer sehr velockend noch eine "Kleinigkeit" hinzuzufügen
+                </li>
+                <li class="fragment">
+                  Oft gibt es unangenehme Teile an Spielen die man
+                  Prokrastiniert
+                </li>
+                <li class="fragment">
+                  &rarr; Versuchen die Scope am anfang des Projektes stark
+                  einzugrenzen mit der Erwartung, dass Scope Creep ohnehin
+                  eintritt
+                </li>
+              </ul>
+            </ul>
+          </section>
+          <section>
+            <ul>
+              <li class="fragment">Pareto Prinzip</li>
+              <ul>
+                <li class="fragment">Auch bekannt als 80/20 Regel</li>
+                <li class="fragment">
+                  80% der Zeit wird gebraucht für die letzten 20% des Spiels
+                </li>
+                <li class="fragment">
+                  Durch typische "übersehenen" Teile eines Projekts oft
+                  unerwartet
+                </li>
+                <ul>
+                  <li class="fragment">Bugfixing</li>
+                  <li class="fragment">Polishing</li>
+                  <li class="fragment">Menu Flow & UX</li>
+                  <li class="fragment">...</li>
+                </ul>
+              </ul>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h2>Pathfinding</h2>
+        </section>
+        <section>
+          <h4>Dijkstra</h4>
+          <section>
+            <video
+              data-autoplay
+              loop
+              src="assets/slide04/dijkstra_demo.mp4"
+              width="80%"
+            ></video>
+            <p class="smol">
+              Von
+              <a href="https://qiao.github.io/PathFinding.js/visual/"
+                >https://qiao.github.io/PathFinding.js/visual/</a
+              >
+            </p>
+          </section>
+          <section>
+            <pre>
+              <code class="language-none">Funktion Dijkstra(Graph, Startknoten):
+    initialisiere(Graph,Startknoten,abstand[],vorgänger[],Q)
+    // Der eigentliche Algorithmus
+    solange Q nicht leer:
+        u := Knoten in Q mit kleinstem Wert in abstand[]
+        // für u ist der kürzeste Weg nun bestimmt
+        entferne u aus Q
+        für jeden Nachbarn v von u:
+            // falls noch nicht berechnet
+            falls v in Q:
+               // prüfe Abstand vom Startknoten zu v
+               distanz_update(u,v,abstand[],vorgänger[])
+    return vorgänger[]</code>
+            </pre>
+            <p class="smol">
+              Quelle: Wikipedia
+              <a href="https://de.wikipedia.org/wiki/Dijkstra-Algorithmus"
+                >https://de.wikipedia.org/wiki/Dijkstra-Algorithmus</a
+              >
+            </p>
+          </section>
+          <section>
+            <ul>
+              <li class="fragment">Garantiert kürzester Pfad</li>
+              <li class="fragment">Probiert zu viel "unnötig"</li>
+              <li class="fragment">
+                Findet Theoretisch viele Pfade zum Startknoten durch Vorgänger
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h4>Idee: Dijkstra mit Schlauem Ausprobieren</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide04/astar_demo.mp4"
+            width="80%"
+          ></video>
+        </section>
+        <section>
+          <h4 class="no-gap">A* im Details</h4>
+          <table>
+            <tr>
+              <td width="45%">
+                <img
+                  src="assets/slide04/astar_closeup.png"
+                  alt=""
+                  width="100%"
+                />
+                <ul></ul>
+              </td>
+              <td style="vertical-align: top">
+                <ul>
+                  <li class="fragment">
+                    <strong>f(n) = g(n) + h(n)</strong> → geschätzte
+                    Gesamtkosten
+                  </li>
+                  <li class="fragment">
+                    <strong>g(n)</strong> → Kosten vom Startknoten
+                  </li>
+                  <li class="fragment">
+                    <strong>h(n)</strong> → Heuristik: geschätzte Kosten zum
+                    Ziel
+                  </li>
+                  <li class="fragment">
+                    <strong>Offene Liste</strong> → zu bewertende Knoten
+                  </li>
+                  <li class="fragment">
+                    <strong>Geschlossene Liste</strong> → bereits bewertete
+                    Knoten
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+          <ul class="no-gap">
+            <li class="fragment">
+              <strong>Heuristik-Regeln:</strong>
+              <ul>
+                <li class="fragment">
+                  Muss <strong>zulässig</strong> sein (überschätzt niemals)
+                </li>
+                <li class="fragment">
+                  Oft <strong>Manhattan</strong> für Gitter,
+                  <strong>euklidisch</strong> für kontinuierlichen Raum
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section data-transition="slide-in none-out">
+          <h4 class="no-gap">A* Step-By-Step</h4>
+          <img
+            class="no-gap"
+            src="assets/slide04/astar1.png"
+            alt=""
+            width="90%"
+          />
+        </section>
+        <section data-transition="none">
+          <h4 class="no-gap">A* Step-By-Step</h4>
+          <img
+            class="no-gap"
+            src="assets/slide04/astar2.png"
+            alt=""
+            width="90%"
+          />
+        </section>
+        <section data-transition="none">
+          <h4 class="no-gap">A* Step-By-Step</h4>
+          <img
+            class="no-gap"
+            src="assets/slide04/astar3.png"
+            alt=""
+            width="90%"
+          />
+        </section>
+        <section data-transition="none">
+          <h4 class="no-gap">A* Step-By-Step</h4>
+          <img
+            class="no-gap"
+            src="assets/slide04/astar4.png"
+            alt=""
+            width="90%"
+          />
+        </section>
+        <section data-transition="none">
+          <h4 class="no-gap">A* Step-By-Step</h4>
+          <img
+            class="no-gap"
+            src="assets/slide04/astar5.png"
+            alt=""
+            width="90%"
+          />
+        </section>
+        <section data-transition="none">
+          <h4 class="no-gap">A* Step-By-Step</h4>
+          <img
+            class="no-gap"
+            src="assets/slide04/astar6.png"
+            alt=""
+            width="90%"
+          />
+        </section>
+        <section data-transition="none">
+          <h4 class="no-gap">A* Step-By-Step</h4>
+          <img
+            class="no-gap"
+            src="assets/slide04/astar7.png"
+            alt=""
+            width="90%"
+          />
+        </section>
+        <section data-transition="none">
+          <h4 class="no-gap">A* Step-By-Step</h4>
+          <img
+            class="no-gap"
+            src="assets/slide04/astar8.png"
+            alt=""
+            width="90%"
+          />
+        </section>
+        <section>
+          <section>
+            <h4>Grid vs Graph</h4>
+            <ul>
+              <li class="fragment">
+                Nicht alle Pathing Probleme in Gamdev sind "normale" Grids
+              </li>
+              <li class="fragment">Oft auch Graphen</li>
+              <li class="fragment">Oder schlimmeres...</li>
+            </ul>
+          </section>
+          <section>
+            <p class="no-gap">😱</p>
+            <img
+              src="assets/slide04/hexagon_grid.png"
+              alt=""
+              width="55%"
+              class="no-gap"
+            />
+            <p class="smol no-gap">
+              Quelle:
+              <a href="https://www.redblobgames.com/grids/hexagons/"
+                >https://www.redblobgames.com/grids/hexagons/</a
+              >
+            </p>
+          </section>
+          <section>
+            <h4>Spielbeispiel (Alchemist Assembly)</h4>
+            <img
+              class="no-gap"
+              src="assets/slide04/example_hexgrid.png"
+              alt=""
+            />
+          </section>
+          <section>
+            <h4>Lösung: Ein Graph!</h4>
+            <img
+              class="no-gap"
+              src="assets/slide04/example_hexgrid_annotated.png"
+              alt=""
+            />
+          </section>
+        </section>
+        <section>
+          <h4>Abstrakteres Beispiel (Froggo Jump)</h4>
+          <img src="assets/slide04/froggo_01.png" alt="" />
+        </section>
+        <section>
+          <h4>Verbindung der Platformen selbst</h4>
+          <img src="assets/slide04/froggo_02.png" alt="" />
+        </section>
+        <section>
+          <h4>Nach Sprungtests</h4>
+          <img src="assets/slide04/froggo_03.png" alt="" />
+        </section>
+        <section>
+          <h4>Pathfinding In Aktion</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide04/froggo_clip.mp4"
+            width="80%"
+          ></video>
+        </section>
+        <section>
+          <h4>Godot <code>NavigationAgent2D</code></h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide04/navagent_demo.mp4"
+            width="80%"
+          ></video>
+        </section>
+        <section>
+          <h2>FIN</h2>
+        </section>
+      </div>
+    </div>
+
+    <script src="../dist/reveal.js"></script>
+    <script src="../plugin/notes/notes.js"></script>
+    <script src="../plugin/markdown/markdown.js"></script>
+    <script src="../plugin/highlight/highlight.js"></script>
+
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+
+      Reveal.initialize({
+        width: 1280,
+        height: 720,
+        margin: 0.04,
+        hash: true,
+        pdfSeparateFragments: false,
+        slideNumber: "c",
+        highlight: {
+          highlightLanguages: true,
+          beforeHighlight: (hljs) => {
+            hljs.registerLanguage("gdscript", function () {
+              "use strict";
+              return {
+                keywords: {
+                  // Core language keywords (Godot 4)
+                  keyword:
+                    "class class_name extends is func signal static const enum var " +
+                    "breakpoint if elif else for while match continue pass return break " +
+                    "in as await and or not self super void ",
+
+                  // Annotations
+                  meta:
+                    "@export @onready @rpc @icon @tool @warning_ignore " +
+                    "@deprecated @must_use @static_unload",
+
+                  // Literals & constants
+                  literal: "true false null",
+
+                  // Built-in constants
+                  variable: "PI TAU INF NAN ",
+
+                  // Built-in functions (Godot 4, GDScript 2.0)
+                  built_in:
+                    "abs acos acosh asin asinh atan atanh atan2 bytes_to_var ceil char clamp " +
+                    "conj cos cosh cbrt db_to_linear deg_to_rad dict_to_inst ease exp expm1 " +
+                    "floor fmod fposmod hash inst_to_dict instance_from_id inverse_lerp " +
+                    "is_equal_approx is_finite is_inf is_instance_valid is_nan is_zero_approx " +
+                    "len lerp lerpf lerp_angle linear_to_db load log log2 max min move_toward " +
+                    "nearest_po2 ord parse_json polar_to_cartesian posmod pow preload print " +
+                    "print_debug print_stack printerr printraw prints printt push_error push_warning " +
+                    "rad_to_deg rand_from_seed rand_seed randf randi randomize range round seed " +
+                    "sign sin sinh smoothstep sqrt step_decimals stepify str str_to_var tan tanh " +
+                    "to_json type_exists typeof validate_json var_to_bytes var_to_str weakref " +
+                    "wrapf wrapi",
+
+                  // Engine types
+                  type:
+                    "String Array Dictionary Vector2 Vector2i Vector3 Vector3i Vector4 Rect2 Rect2i " +
+                    "Color Node Node2D CharacterBody2D RigidBody2D StaticBody2D Area2D " +
+                    "CollisionShape2D CollisionPolygon2D Sprite2D AnimatedSprite2D TileMap " +
+                    "Camera2D NavigationRegion2D CanvasItem Control Button Label LineEdit TextEdit " +
+                    "Container Panel TextureRect GridContainer VBoxContainer HBoxContainer " +
+                    "SceneTree Resource PackedScene AnimationPlayer AnimationTree Timer Tween " +
+                    "Shader ShaderMaterial Mesh MeshInstance3D Camera3D Light3D WorldEnvironment " +
+                    "AudioStreamPlayer2D AudioStreamPlayer3D Input Event File PackedByteArray " +
+                    "RID Callable Signal Variant",
+
+                  property:
+                    "name position rotation rotation_degrees scale global_position global_rotation " +
+                    "global_transform transform visible modulate texture offset flip_h flip_v " +
+                    "move_and_slide move_and_collide look_at apply_central_impulse apply_impulse " +
+                    "add_child remove_child get_node get_parent queue_free is_visible_in_tree " +
+                    "is_on_floor is_on_wall is_on_ceiling velocity direction floor_normal up_direction " +
+                    "set_deferred set_process set_physics_process get_tree get_viewport " +
+                    "input_event _process _physics_process _ready _input _enter_tree _exit_tree " +
+                    "play stop is_playing set_animation get_animation add_animation remove_animation " +
+                    "set_parameter get_parameter start stop is_stopped wait_time time_left " +
+                    "start_tween stop_all_tweens interpolate_property interpolate_method " +
+                    "set_material get_material set_shader_parameter get_shader_parameter " +
+                    "connect disconnect emit_signal is_connected has_signal has_method " +
+                    "has_node has_node_and_resource duplicate get_path get_instance_id " +
+                    "set_texture set_position set_rotation set_scale set_visible " +
+                    "set_name set_modulate set_physics_material_override set_collision_layer " +
+                    "set_collision_mask set_collision_layer_value set_collision_mask_value " +
+                    "get_collision_layer get_collision_mask " +
+                    "play_animation stop_animation set_blend_position get_blend_position " +
+                    "add_blend_tree_node remove_blend_tree_node set_blend_tree_node_position " +
+                    "set_blend_tree_node_animation " +
+                    "focus_mode grab_focus release_focus is_hovered text placeholder_text " +
+                    "editable secret character_limit caret_position insert_text_at_caret " +
+                    "clear_text select_all deselect select get_selected_text get_selection_from_line " +
+                    "set_cursor_set_line set_line_as_center " +
+                    "get_camera_2d get_camera_3d set_current make_current clear_current " +
+                    "set_limit_left set_limit_right set_limit_top set_limit_bottom " +
+                    "zoom offset smoothing_enabled smoothing_speed " +
+                    "set_navigation_map get_navigation_map set_navigation_layers get_navigation_layers " +
+                    "set_navigation_region_layers get_navigation_region_layers " +
+                    "is_in_group add_to_group remove_from_group get_groups " +
+                    "instance instantiate preload load save_resource_to_path " +
+                    "playback_speed playback_position set_blend_space_value get_blend_space_value " +
+                    "is_instance_valid is_queued_for_deletion " +
+                    "playback_travel playback_start playback_stop playback_reset " +
+                    "seek advance rewind get_length set_loop_mode get_loop_mode " +
+                    "process_mode set_process_mode",
+                },
+
+                contains: [
+                  hljs.HASH_COMMENT_MODE,
+                  hljs.NUMBER_MODE,
+
+                  // Strings (multi-line and single)
+                  {
+                    className: "string",
+                    begin: '"""',
+                    end: '"""',
+                    relevance: 10,
+                  },
+                  hljs.QUOTE_STRING_MODE,
+
+                  // Functions
+                  {
+                    className: "title function_",
+                    beginKeywords: "func",
+                    end: /:/,
+                    excludeEnd: true,
+                    contains: [hljs.UNDERSCORE_TITLE_MODE],
+                  },
+
+                  // Classes
+                  {
+                    className: "title class_",
+                    beginKeywords: "class",
+                    end: /:/,
+                    excludeEnd: true,
+                    contains: [hljs.UNDERSCORE_TITLE_MODE],
+                  },
+
+                  // Annotations (@something)
+                  {
+                    className: "meta",
+                    begin: /@[A-Za-z_]\w*/,
+                  },
+
+                  // .new() and method calls
+                  {
+                    className: "built_in",
+                    begin: /\.\s*[A-Za-z_]\w*\s*(?=\()/,
+                    relevance: 0,
+                  },
+                ],
+              };
+            });
+          },
+        },
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
