@@ -99,10 +99,6 @@ max-height: 70vh;
   padding-inline: 10px;
 }
 
-.print-pdf h4 {
-  /* background-color: aqua; */
-}
-
 /* Expand code in PDF mode for copying */
 .print-pdf pre code {
   max-height: none !important;
