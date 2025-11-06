@@ -36,33 +36,477 @@
           <p>TH Bingen</p>
         </section>
         <section>
-          <h3>Heutige Themen: Diverse Pitfalls</h3>
-          <ul>
-            <li><code>.tres</code>: Was sind Resources?</li>
-            <li>GDscript Beispiele</li>
-            <li>"Lessons learned"/Typische Probleme aus meiner Erfahrung</li>
-            <li>Pattern/Antipattern</li>
-          </ul>
+          <img
+            class="r-stretch no-gap"
+            src="assets/Hochschulkalender_ws25_26.png"
+            alt="Hochschulkalenderplan"
+          />
+          <div>
+            <span style="color: #00ff75">■</span>Grün == Normalbetrieb |
+            <span style="color: #ffd800">■</span>Gelb == Projekttermine
+          </div>
         </section>
         <section>
-          <h4><code>.tres</code> - Text Recources</h4>
-          <!-- TODO: Video von duplicate -->
+          <h4>Problem 1: Bei duplicate sind gewisse Dinge Linked</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide05/dup_demo.mp4"
+            width="80%"
+          ></video>
         </section>
         <section>
           <h4>Warum???</h4>
           <ul>
-            <li>eine <code>Node</code> liefert Funktionalität</li>
-            <li>eine <code>Ressource</code> ist ein Datencontainer</li>
-            <li>Ressourcen werden von Godot nur einmalig geladen und immer wieder refernziert</li>
+            <li class="fragment">eine <code>Node</code> liefert Funktionalität</li>
+            <li class="fragment">eine <code>Ressource</code> ist ein Datencontainer</li>
+            <li class="fragment">
+              Ressourcen werden von Godot nur einmalig geladen und immer wieder
+              refernziert
+            </li>
           </ul>
         </section>
         <section>
-          <h4>Vorteile</h4>
+          <div class="grid2">
+            <div>
+              <h4>Vorteile</h4>
+              <ul>
+                <li class="fragment">Weniger Datenredundanz</li>
+                <li class="fragment">Die Möglichkeit mehrere Instanzen "for free" zu haben</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Nachteile</h4>
+              <ul>
+                <li class="fragment">
+                  Bei Kopien oder Duplikaten muss man erstmal die Ressourcen
+                  <code>unique</code> machen
+                </li>
+                <li class="fragment">Nicht wirklich das intuitive Verhalten</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h4>Wozu <code>.tres</code> benutzen?</h4>
           <ul>
-            <li>weniger Datenredundanz</li>
-            <li>die Möglichkeit mehrere Instanzen "for free" zu haben</li>
-            
+            <li class="fragment">
+              Austauschbare Einstellungen von Objekten (siehe Laser/Raketen von
+              E02)
+            </li>
+            <li class="fragment">Feste Infos die sich nicht oft verändern</li>
+            <ul>
+              <li class="fragment">Materialien</li>
+              <li class="fragment">Meshes</li>
+              <li class="fragment">Texturen</li>
+              <li class="fragment">...</li>
+            </ul>
           </ul>
+        </section>
+        <section>
+          <h4>Floating Point error</h4>
+          <p>(Epilepsiewarnung: Nächste Folie enhtält rapides blinken)</p>
+        </section>
+        <section>
+          <h4>Floating Point error demo</h4>
+          <video
+            data-autoplay
+            loop
+            src="assets/slide05/floating_point_error.mp4"
+            width="80%"
+          ></video>
+          <p style="color: red" class="no-gap">
+            (Epilepsiewarnung: Diese Folie enhtält rapides blinken)
+          </p>
+        </section>
+        <section>
+          <section>
+            <h4>Floating Point error Erklärung</h4>
+            <img
+              class="no-gap"
+              src="assets/slide05/float_error_pre.png"
+              alt=""
+            />
+            <p class="no-gap">Bei "nur" 72km</p>
+          </section>
+          <section>
+            <img
+              class="no-gap"
+              src="assets/slide05/float_error_post.png"
+              alt=""
+            />
+            <p class="no-gap">Bei 500.000km</p>
+          </section>
+          <section>
+            <ul>
+              <li class="fragment"><code>float</code> hat eine begrenzte Auflösung</li>
+              <li class="fragment">
+                bei gewissen Schritten kommt es zu den klassischen "floating
+                point error"
+              </li>
+              <li class="fragment">ganz kleine Zahl addieren macht ggf nichts durch fehler</li>
+              <li class="fragment">
+                &rarr; bei großer Zahl macht das addieren kleiner Zahlen nichts
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h4>Lösung?</h4>
+            <ul>
+              <li class="fragment">Skalierung des Spiels verändern und Distanz faken</li>
+              <li class="fragment">
+                Wechseln in lokale Szenen und nur so tun als wäre alles
+                beisammen
+              </li>
+              <li class="fragment">
+                (Beispiel <code>Outer Wilds</code>:) Welt bewegen und nicht den
+                Spieler
+              </li>
+              <ul>
+                <li class="fragment">&rarr; Problem nicht wirklich gelöst</li>
+                <li class="fragment">
+                  &rarr; Camera ist aber immer beim Spieler bei (0,0) und
+                  "kriegt es nicht mit"
+                </li>
+              </ul>
+              <li class="fragment">
+                Man kann Godot auch mit <code>double</code> precision compilen,
+                verschiebt Problem aber nur
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h4>Problem: Rigidbody Clipping</h4>
+            <p>
+              Problem: Rigidbody Clipped durch andere Collider bei hohen
+              geschwindigkeiten
+            </p>
+            <p>Lösung: CCD (Continous Collision Detection)</p>
+          </section>
+          <section>
+            <video
+              data-autoplay
+              loop
+              src="assets/slide05/rigidbody_clipping.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <h4>Erklärung an Beispiel: Collision berechnung bei SM64</h4>
+            <video
+              data-autoplay
+              loop
+              src="assets/slide05/sm64_pannenkoek_collision.mp4"
+              width="80%"
+            ></video>
+            <p class="smol no-gap">
+              pannenkoek2012: A Press Challenge SM64 - Watch for Rolling Rocks:
+              <a href="https://youtu.be/kpk2tdsPh0A"
+                >https://youtu.be/kpk2tdsPh0A</a
+              >
+            </p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h4>"Forward" Vektoren</h4>
+            <video
+              data-autoplay
+              loop
+              src="assets/slide05/demo_move_up.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <video
+              data-autoplay
+              loop
+              src="assets/slide05/demo_move_rot_wrong.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <p>Bewegung in Richtung "Forward" (<code>Vector2.UP</code>)</p>
+            <pre>
+              <code class="language-gdscript">func _physics_process(delta):
+  position.y += -60 * delta
+  rotation += 1 * delta</code>
+            </pre>
+            <div class="fragment">
+              <p>&darr;</p>
+              <p>Bewegung in lokale <code>UP</code> Richtung</p>
+              <pre>
+                <code class="language-gdscript">func _physics_process(delta):
+  position += transform.y * -60 * delta
+  rotation += 1 * delta</code>
+                </pre>
+            </div>
+          </section>
+          <section>
+            <video
+              data-autoplay
+              loop
+              src="assets/slide05/demo_move_rot_right.mp4"
+              width="80%"
+            ></video>
+          </section>
+          <section>
+            <p>In 3D sehr ähnlich mit der <code>basis</code>:</p>
+            <pre>
+              <code class="language-gdscript">position += -transform.basis.z * 60 * delta</code>
+            </pre>
+          </section>
+        </section>
+        <section>
+          <h4>Gamedev Mathe 👀</h4>
+          <ul>
+            <li class="fragment">LERP == Linear Interpolation</li>
+            <ul>
+              <li class="fragment">
+                Nützlich um etwas smooth von A nach B zu animieren/bewegen
+              </li>
+              <li class="fragment">Passiert im Prinzip ständig im Hintergrund</li>
+            </ul>
+            <li class="fragment">Vector Rechnungen</li>
+          </ul>
+        </section>
+        <section>
+          <section>
+            <h4>Problem: Schussbahnen ausrechnen und Geschoss animieren</h4>
+            <video
+              data-autoplay
+              loop
+              src="assets/slide05/bb_mortar.mp4"
+              width="80%"
+            ></video>
+            <p class="smol no-gap">Spiel: Baloon Bonanza</p>
+          </section>
+          <section>
+            <h4>Teilproblem:</h4>
+            <p class="no-gap">Wo ist der Gegner wenn das Geschoss ankommt?</p>
+            <video
+              data-autoplay
+              loop
+              src="assets/slide05/bb_bbturret_demo.mp4"
+              width="65%"
+            ></video>
+          </section>
+          <section>
+            <p>Ansatz:</p>
+            <ul>
+              <li class="fragment">Gegner geschwindigkeit abrufen</li>
+              <li class="fragment">Gegner Pfad position abrufen</li>
+              <li class="fragment">Gegner Pfad position + geschwindigkeit * bullet flugzeit</li>
+              <li class="fragment">
+                Problem: Bullet flugzeit ist abhängig von ausgerechneter Distanz
+              </li>
+              <li class="fragment">Annäherung: Iterativ öfter drüberrechnen</li>
+            </ul>
+          </section>
+          <section>
+            <pre>
+              <code class="language-gdscript">
+func calculate_lead_aim(from: Vector3, bullet_speed: float, iterations: int = 1) -> Vector3:
+	assert(target != null)
+	var target_position = target.global_position
+	for i in range(iterations):
+		var distance = from.distance_to(target_position)
+		var time = distance / bullet_speed
+		var target_progress = target.progress + target.settings.speed * time * target.speed_mult
+		# check if target is overflowing the path
+		if target_progress > target.parent_path.curve.get_baked_length():
+			target_progress = target.parent_path.curve.get_baked_length()
+		target_position = target.parent_path.curve.sample_baked(target_progress)
+         &curvearrowright; + target.parent_path.global_position
+	# t_cl.global_position = target_position
+	return target_position</code>
+            </pre>
+          </section>
+          <section>
+            <h4>LERP - Linear Interpolation</h4>
+            <video
+              data-autoplay
+              src="assets/slide05/freya_lerp.mp4"
+              width="80%"
+            ></video>
+            <p class="no-gap smol">
+              Freye Holm&eacute;r - The Beauty of Bézier Curves:
+              <a href="https://youtu.be/aVwxzDHniEw"
+                >https://youtu.be/aVwxzDHniEw</a
+              >
+            </p>
+          </section>
+          <section>
+            <h4>B&eacute;zier Curves</h4>
+            <video
+              data-autoplay
+              src="assets/slide05/freya_curves.mp4"
+              width="80%"
+            ></video>
+            <p class="no-gap smol">
+              Freye Holm&eacute;r - The Beauty of Bézier Curves:
+              <a href="https://youtu.be/aVwxzDHniEw"
+                >https://youtu.be/aVwxzDHniEw</a
+              >
+            </p>
+          </section>
+          <section>
+            <p>Lösung für Flugbahnberechnung:</p>
+            <ul>
+              <li class="fragment">Start und Endpunkt stehen fest</li>
+              <li class="fragment">zwei Punkte bei 25% und 75% festlegen</li>
+              <li class="fragment">
+                beide jeweils um die halbe distanz nach
+                <code>Vector3.UP</code> verschieben
+              </li>
+              <li class="fragment">
+                Cubic B&eacute;zier curve samplen während der Flugbahn und am
+                Ende explodieren
+              </li>
+            </ul>
+          </section>
+          <section>
+            <pre>
+              <code class="language-gdscript">func shoot_bomb(target_pos: Vector3, tof: float, damage: float):
+	var bomb = bullet.instantiate() as Bomb
+	get_parent().add_child(bomb)
+	bomb.global_position = cannon_node.global_position
+	var p1 = cannon_node.global_position
+	var p4 = target_pos
+	var dist = p1.distance_to(p4)
+	var p2 = (p1+(p4-p1)*0.25)
+	p2.y += dist*0.5
+	var p3 = (p1+(p4-p1)*0.75)
+	p3.y += dist*0.5
+	bomb.shoot(p1, p2, p3, p4, tof, damage)</code>
+            </pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h4>Speed quiz: Vector Mathe</h4>
+            <p>
+              Folgende Bilder von Wikipedia (english) von
+              <code>Euclidean Vector</code>
+            </p>
+            <p>
+              <a href="https://en.wikipedia.org/wiki/Euclidean_vector"
+                >https://en.wikipedia.org/wiki/Euclidean_vector</a
+              >
+            </p>
+          </section>
+          <section>
+            <p>Frage: Zwei Vektoren addieren?</p>
+            <p class="fragment">Antwort: $\vec{a} + \vec{b} = \vec{c}$</p>
+            <p class="fragment">In Godot: <code>vecc = veca + vecb</code></p>
+            <img
+              class="fragment"
+              src="assets/slide05/vec_add.png"
+              alt=""
+              width="35%"
+            />
+          </section>
+          <section>
+            <p>Frage: Richtung und Distanz von A nach B?</p>
+            <p class="fragment">Antwort: $\vec{a} - \vec{b} = \vec{c}$</p>
+            <p class="fragment">In Godot: <code>vecc = veca - vecb</code></p>
+            <img
+              class="fragment"
+              src="assets/slide05/vec_sub.png"
+              alt=""
+              width="30%"
+            />
+          </section>
+          <section>
+            <p>Frage: Einen Vektor mit einem Skalar skalieren?</p>
+            <p class="fragment">Antwort: $k \cdot \vec{v} = \vec{w}$</p>
+            <p class="fragment">In Godot: <code>myvec * 5</code></p>
+            <img
+              class="fragment"
+              src="assets/slide05/vec_skalar.png"
+              alt=""
+              width="35%"
+            />
+          </section>
+          <section>
+            <p>Frage: Die Länge eines Vektors berechnen?</p>
+            <p class="fragment">
+              Antwort: $|\vec{v}| = \sqrt{v_x^2 + v_y^2 + v_z^2}$
+            </p>
+            <div class="fragment">
+              <p>In Godot: <code>myvec.length()</code></p>
+              <p>
+                (Oder <code>myvec.length_squared()</code> bei Vergleichen für
+                Performance)
+              </p>
+            </div>
+          </section>
+          <section>
+            <p>Frage: Einen Vektor in einen Einheitsvektor umwandeln?</p>
+            <p class="fragment">
+              Antwort: $\hat{v} = \frac{\vec{v}}{|\vec{v}|}$
+            </p>
+            <p class="fragment">In Godot: <code>myvec.normalized()</code></p>
+          </section>
+          <section>
+            <p>Frage: Den Winkel zwischen zwei Vektoren berechnen?</p>
+            <p class="fragment">
+              Antwort: $\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}|\cos\theta
+              \quad \Rightarrow \quad \theta = \cos^{-1}\left(\frac{\vec{a}
+              \cdot \vec{b}}{|\vec{a}||\vec{b}|}\right)$
+            </p>
+            <div class="fragment">
+              <p>In Godot: <code>angle = vecA.angle_to(vecB)</code></p>
+              <p>(Dot product!)</p>
+            </div>
+          </section>
+          <section>
+            <div
+              class="grid2"
+              style="grid-template-columns: 83% 20%; align-items: center"
+            >
+              <div>
+                <p>
+                  Frage: Einen Vektor finden, der senkrecht zu zwei gegebenen
+                  Vektoren im 3D-Raum ist? (Stichwort: <code>normal</code>)
+                </p>
+                <p class="fragment">
+                  Antwort: $\vec{a} \times \vec{b} = \vec{n}$
+                </p>
+                <p class="fragment">
+                  In Godot: <code>normal = vecA.cross(vecB)</code>
+                </p>
+              </div>
+              <img
+                src="assets/slide05/vec_cross.png"
+                alt=""
+                width="80%"
+                class="fragment"
+              />
+            </div>
+          </section>
+          <section>
+            <p>Empfehlung als Mathe refresher wenn sinnvoll:</p>
+            <img
+              class="no-gap"
+              src="assets/slide05/freya_math_intro.png"
+              alt=""
+              width="75%"
+            />
+            <p class="smol no-gap">
+              Freya Holm&eacute;r - Vectors & Dot Product • Math for Game Devs
+              [Part 1]
+              <a href="https://youtu.be/MOYiVLEnhrw"
+                >https://youtu.be/MOYiVLEnhrw</a
+              >
+            </p>
+            <p class="smol no-gap">Achtung: 3h lang, aber gut erklärt</p>
+          </section>
+        </section>
+        <section>
+          <h2>FIN</h2>
         </section>
       </div>
     </div>
@@ -71,7 +515,7 @@
     <script src="../plugin/notes/notes.js"></script>
     <script src="../plugin/markdown/markdown.js"></script>
     <script src="../plugin/highlight/highlight.js"></script>
-
+    <script src="../plugin/math/math.js"></script>
     <script>
       // More info about initialization & config:
       // - https://revealjs.com/initialization/
@@ -222,7 +666,12 @@
           },
         },
         // Learn about plugins: https://revealjs.com/plugins/
-        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealNotes,
+          RevealMath.KaTeX,
+        ],
       });
     </script>
   </body>
