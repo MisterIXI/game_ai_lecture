@@ -27,9 +27,15 @@
     "prefix": "gdcode",
     "body": [
         "<pre>",
-        "\t<code class=\"language-gdscript\">",
-        "\t\t${1}",
-        "\t</code>",
+        "\t<code class=\"language-gdscript\">${1}</code>",
+        "</pre>"
+    ]
+  },
+  "godot shader_block":{
+    "prefix": "gdshader",
+    "body": [
+        "<pre>",
+        "\t<code class=\"language-glsl\">${1}</code>",
         "</pre>"
     ]
   }
